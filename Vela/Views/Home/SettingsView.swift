@@ -278,7 +278,7 @@ struct SettingsView: View {
 
                     if isGrouping {
                         HStack(spacing: 10) {
-                            VelaSpinner(size: 20, lineWidth: 2)
+                            VelaIPTVSpinner(size: 20, lineWidth: 2)
                             Text("Organizing categories…")
                                 .font(.system(size: 13, weight: .medium))
                                 .foregroundColor(Color.appTextSecondary)

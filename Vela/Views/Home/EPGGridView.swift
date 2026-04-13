@@ -45,7 +45,7 @@ struct EPGGridView: View {
             
             if isLoading {
                 Spacer()
-                VelaSpinner(size: 40, lineWidth: 3)
+                VelaIPTVSpinner(size: 40, lineWidth: 3)
                 Spacer()
             } else if channels.isEmpty {
                 Spacer()
@@ -82,7 +82,7 @@ struct EPGGridView: View {
             // Loading indicator
             if epgVM.isFetching {
                 HStack(spacing: 8) {
-                    VelaSpinner(size: 14, lineWidth: 2)
+                    VelaIPTVSpinner(size: 14, lineWidth: 2)
                     Text("Loading EPG…")
                         .font(.system(size: 12, weight: .medium))
                         .foregroundColor(Color.appTextSecondary)

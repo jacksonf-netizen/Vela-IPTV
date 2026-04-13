@@ -47,7 +47,7 @@ enum ThemeMode: String, Codable, CaseIterable, Identifiable {
 }
 
 // MARK: - Config Struct
-struct VelaSettings: Codable, Equatable {
+struct VelaIPTVSettings: Codable, Equatable {
     // 1. General
     var startupScreen: StartupScreen = .home
     var resumeLastChannel: Bool = true
@@ -76,5 +76,5 @@ struct VelaSettings: Codable, Equatable {
     var leftRightAction: KeyAction = .volume
     var enterAction: KeyAction = .toggleFullscreen
     
-    static let `default` = VelaSettings()
+    static let `default` = VelaIPTVSettings()
 }

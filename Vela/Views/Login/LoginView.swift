@@ -12,7 +12,7 @@ struct AddProviderView: View {
     var body: some View {
         ZStack {
             // MARK: – Abstract Vela Theme
-            VelaThemeView()
+            VelaIPTVThemeView()
 
             VStack(spacing: 0) {
                 if !isSheet { Spacer() }
@@ -21,7 +21,7 @@ struct AddProviderView: View {
                 VStack(spacing: 16) {
                     ZStack {
                         RoundedRectangle(cornerRadius: 18, style: .continuous)
-                            .fill(Color.velaGradient)
+                            .fill(Color.velaIPTVGradient)
                             .frame(width: isSheet ? 56 : 80, height: isSheet ? 56 : 80)
                             .shadow(color: Color.appAccent.opacity(0.4), radius: 20, x: 0, y: 10)
                         
@@ -34,10 +34,6 @@ struct AddProviderView: View {
                         Text(isSheet ? "New Provider" : "Vela IPTV")
                             .font(.system(size: isSheet ? 24 : 34, weight: .bold, design: .rounded))
                             .foregroundColor(.white)
-                        
-                        Text(isSheet ? "Expand your stream library" : "Native. Premium. IPTV.")
-                            .font(.system(size: 14, weight: .medium))
-                            .foregroundColor(Color.appTextSecondary)
                     }
                 }
                 .padding(.bottom, isSheet ? 32 : 48)
@@ -51,15 +47,6 @@ struct AddProviderView: View {
                         isSecure: false
                     )
                     .focused($focusedField, equals: .name)
-                    .onSubmit { focusedField = .server }
-
-                    StyledInputField(
-                        icon: "server.rack",
-                        placeholder: "Server URL (http://...)",
-                        text: $authVM.newServerURL,
-                        isSecure: false
-                    )
-                    .focused($focusedField, equals: .server)
                     .onSubmit { focusedField = .username }
 
                     StyledInputField(
@@ -78,7 +65,26 @@ struct AddProviderView: View {
                         isSecure: true
                     )
                     .focused($focusedField, equals: .password)
+                    .onSubmit { focusedField = .server }
+
+                    StyledInputField(
+                        icon: "server.rack",
+                        placeholder: "Server URL (http://...)",
+                        text: $authVM.newServerURL,
+                        isSecure: false
+                    )
+                    .focused($focusedField, equals: .server)
                     .onSubmit { Task { await authVM.addProvider() } }
+
+                    // Privacy Footer
+                    HStack(spacing: 6) {
+                        Image(systemName: "lock.shield.fill")
+                            .font(.system(size: 10))
+                        Text("All credentials are stored locally.")
+                            .font(.system(size: 11, weight: .medium))
+                    }
+                    .foregroundColor(Color.appTextSecondary.opacity(0.8))
+                    .padding(.top, 4)
 
                     if let error = authVM.errorMessage {
                         HStack(spacing: 8) {
@@ -132,11 +138,7 @@ struct AddProviderView: View {
 
                 if !isSheet { Spacer() }
 
-                Text("All credentials stored locally")
-                    .font(.system(size: 10, weight: .black))
-                    .foregroundColor(Color.appTextSecondary.opacity(0.4))
-                    .tracking(1.0)
-                    .padding(.vertical, 32)
+                // Bottom disclaimer removed as it's now under the title
             }
         }
         .onAppear { authVM.resetForm(); focusedField = .name }
@@ -151,7 +153,7 @@ struct AddProviderView: View {
         Button { Task { await authVM.addProvider() } } label: {
             ZStack {
                 if authVM.isLoading {
-                    VelaSpinner(size: 22, lineWidth: 3)
+                    VelaIPTVSpinner(size: 22, lineWidth: 3)
                 } else {
                     HStack(spacing: 10) {
                         Image(systemName: "plus.circle.fill")
@@ -164,7 +166,7 @@ struct AddProviderView: View {
             }
             .frame(maxWidth: .infinity)
             .frame(height: 50)
-            .background(isFormValid ? AnyShapeStyle(Color.velaGradient) : AnyShapeStyle(Color.white.opacity(0.1)))
+            .background(isFormValid ? AnyShapeStyle(Color.velaIPTVGradient) : AnyShapeStyle(Color.white.opacity(0.1)))
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             .scaleEffect(isHoveringButton && isFormValid ? 1.02 : 1.0)
             .shadow(color: isFormValid ? Color.appAccent.opacity(isHoveringButton ? 0.5 : 0.3) : .clear,

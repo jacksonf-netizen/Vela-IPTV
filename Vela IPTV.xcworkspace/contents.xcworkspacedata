@@ -2,12 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Vela.xcodeproj">
+      location = "group:Vela IPTV.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:PlaybackSettingsView.swift">
    </FileRef>
 </Workspace>

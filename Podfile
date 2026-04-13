@@ -1,4 +1,4 @@
-project 'Vela.xcodeproj'
+project 'Vela IPTV.xcodeproj'
 platform :osx, '14.0'
 use_modular_headers!
 

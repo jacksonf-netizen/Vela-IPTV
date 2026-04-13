@@ -8,7 +8,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 }
 
 @main
-struct VelaApp: App {
+struct VelaIPTVApp: App {
     @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     var body: some Scene {

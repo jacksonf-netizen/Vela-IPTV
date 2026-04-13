@@ -65,7 +65,7 @@ extension Color {
     static let appTextSecondary = Color.dynamicColor(light: "8E8E93", dark: "9898A0")
     
     // Gradients
-    static let velaGradient = LinearGradient(
+    static let velaIPTVGradient = LinearGradient(
         colors: [appAccent, appAccentAlt],
         startPoint: .topLeading,
         endPoint: .bottomTrailing

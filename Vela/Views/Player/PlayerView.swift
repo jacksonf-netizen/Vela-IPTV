@@ -32,7 +32,7 @@ struct PlayerView: View {
             switch vm.state {
             case .loading:
                 VStack(spacing: 20) {
-                    VelaSpinner()
+                    VelaIPTVSpinner()
                         .frame(width: 40, height: 40)
                     Text("Connecting to stream…")
                         .foregroundColor(Color(hex: "8E8EA0"))
@@ -57,7 +57,7 @@ struct PlayerView: View {
                     
                     if vm.isBuffering {
                         VStack(spacing: 0) {
-                            VelaSpinner(size: 32, lineWidth: 3)
+                            VelaIPTVSpinner(size: 32, lineWidth: 3)
                         }
                         .padding(24)
                         .background(VisualEffectView(material: .hudWindow, blendingMode: .withinWindow).cornerRadius(12))

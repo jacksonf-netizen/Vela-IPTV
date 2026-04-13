@@ -122,7 +122,7 @@ struct ChannelGridView: View {
             if isLoading {
                 Spacer()
                 VStack(spacing: 16) {
-                    VelaSpinner(size: 44, lineWidth: 4)
+                    VelaIPTVSpinner(size: 44, lineWidth: 4)
                     Text("Fetching Streams…")
                         .font(.system(size: 14, weight: .bold, design: .rounded))
                         .foregroundColor(Color.appTextSecondary)

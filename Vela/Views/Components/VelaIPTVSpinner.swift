@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct VelaSpinner: View {
+struct VelaIPTVSpinner: View {
     let size: CGFloat
     let lineWidth: CGFloat
     
@@ -15,7 +15,7 @@ struct VelaSpinner: View {
         Circle()
             .trim(from: 0, to: 0.7)
             .stroke(
-                Color.velaGradient,
+                Color.velaIPTVGradient,
                 style: StrokeStyle(lineWidth: lineWidth, lineCap: .round)
             )
             .frame(width: size, height: size)

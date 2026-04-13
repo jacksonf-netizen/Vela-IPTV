@@ -85,7 +85,7 @@ struct SidebarView: View {
                             
                             if providerCats.isEmpty && isLoading {
                                 HStack(spacing: 12) {
-                                    VelaSpinner(size: 14, lineWidth: 2)
+                                    VelaIPTVSpinner(size: 14, lineWidth: 2)
                                     Text("Loading Categories…")
                                         .font(.system(size: 11, weight: .medium))
                                         .foregroundColor(Color.appTextSecondary)
@@ -98,7 +98,7 @@ struct SidebarView: View {
 
                     if isLoading && expandedProviderIds.isEmpty {
                         HStack(spacing: 10) {
-                            VelaSpinner(size: 16, lineWidth: 2)
+                            VelaIPTVSpinner(size: 16, lineWidth: 2)
                             Text("Syncing…")
                                 .font(.system(size: 12, weight: .medium))
                                 .foregroundColor(Color.appTextSecondary)

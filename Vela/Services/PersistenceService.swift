@@ -6,17 +6,17 @@ import SwiftUI
 class PersistenceService: ObservableObject {
     static let shared = PersistenceService()
 
-    private let providersKey      = "vela.providers"
-    private let activeProviderKey  = "vela.activeProviderId"
-    private let favoritesKey       = "vela.favorites"
-    private let recentsKey         = "vela.recents"
-    private let hiddenCatsKey      = "vela.hiddenCategories" // Legacy global key
-    private let perProviderCatsKey = "vela.perProviderHiddenCategories"
-    private let playbackBufferKey  = "vela.playbackBufferDuration"
-    private let bufferProfileKey   = "vela.bufferProfile"
-    private let startupDelayKey    = "vela.startupBufferDelay"
-    private let streamFormatKey    = "vela.preferredStreamFormat"
-    private let secretsPrefix      = "vela.provider.secure."
+    private let providersKey      = "velaiptv.providers"
+    private let activeProviderKey  = "velaiptv.activeProviderId"
+    private let favoritesKey       = "velaiptv.favorites"
+    private let recentsKey         = "velaiptv.recents"
+    private let hiddenCatsKey      = "velaiptv.hiddenCategories" // Legacy global key
+    private let perProviderCatsKey = "velaiptv.perProviderHiddenCategories"
+    private let playbackBufferKey  = "velaiptv.playbackBufferDuration"
+    private let bufferProfileKey   = "velaiptv.bufferProfile"
+    private let startupDelayKey    = "velaiptv.startupBufferDelay"
+    private let streamFormatKey    = "velaiptv.preferredStreamFormat"
+    private let secretsPrefix      = "velaiptv.provider.secure."
     private let maxRecents         = 20
     private let maxProviders       = 5
     
@@ -24,7 +24,7 @@ class PersistenceService: ObservableObject {
     private var favoriteSaveWork: DispatchWorkItem?
     private var recentsSaveWork: DispatchWorkItem?
     private var hiddenCatsSaveWork: DispatchWorkItem?
-    private let saveQueue = DispatchQueue(label: "com.vela.persistence.save", qos: .utility)
+    private let saveQueue = DispatchQueue(label: "com.velaiptv.persistence.save", qos: .utility)
     
     // Obfuscation key - just to deter casual inspection
     private let obfuscationKey: [UInt8] = [0x56, 0x65, 0x6C, 0x61, 0x49, 0x50, 0x54, 0x56] // "VelaIPTV"
@@ -45,17 +45,17 @@ class PersistenceService: ObservableObject {
     @Published var preferredStreamFormat: StreamFormat = .hls
     
     @Published var autoHideNewCategories: Bool = false
-    private let autoHideCatsKey = "vela.settings.autoHideNewCats"
+    private let autoHideCatsKey = "velaiptv.settings.autoHideNewCats"
     
-    @Published var settings: VelaSettings = .default {
+    @Published var settings: VelaIPTVSettings = .default {
         didSet {
             saveSettingsSync()
         }
     }
-    private let settingsKey = "vela.settings.master"
+    private let settingsKey = "velaiptv.settings.master"
     
     private var knownCategories: [String: Set<String>] = [:]
-    private let knownCatsKey = "vela.settings.knownCats"
+    private let knownCatsKey = "velaiptv.settings.knownCats"
 
     var activeProvider: Provider? {
         providers.first { $0.id == activeProviderId } ?? providers.first
@@ -125,7 +125,7 @@ class PersistenceService: ObservableObject {
 
     private func loadSettings() {
         if let data = UserDefaults.standard.data(forKey: settingsKey),
-           let decoded = try? JSONDecoder().decode(VelaSettings.self, from: data) {
+           let decoded = try? JSONDecoder().decode(VelaIPTVSettings.self, from: data) {
             settings = decoded
         }
     }
@@ -212,7 +212,7 @@ class PersistenceService: ObservableObject {
         // Remove locally stored secrets
         UserDefaults.standard.removeObject(forKey: secretsPrefix + provider.id.uuidString)
         // Cleanup keychain if it exists (silent fallback)
-        deleteFromKeychain(account: "vela.provider.\(provider.id.uuidString)")
+        deleteFromKeychain(account: "velaiptv.provider.\(provider.id.uuidString)")
         
         if activeProviderId == provider.id {
             activeProviderId = providers.first?.id
@@ -276,7 +276,7 @@ class PersistenceService: ObservableObject {
     // MARK: - Keychain Migration Helpers (Permissionless)
 
     private func loadFromKeychain(account: String) -> String? {
-        let service = "com.vela.app.iptv-credentials"
+        let service = "com.velaiptv.app.iptv-credentials"
         let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
@@ -294,7 +294,7 @@ class PersistenceService: ObservableObject {
     }
 
     private func deleteFromKeychain(account: String) {
-        let service = "com.vela.app.iptv-credentials"
+        let service = "com.velaiptv.app.iptv-credentials"
         let query: [CFString: Any] = [
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
@@ -328,7 +328,7 @@ class PersistenceService: ObservableObject {
                 }
                 
                 // 2. Fallback to Keychain migration
-                let keychainKey = "vela.provider.\(idStr)"
+                let keychainKey = "velaiptv.provider.\(idStr)"
                 if let json = loadFromKeychain(account: keychainKey),
                    let data = json.data(using: .utf8),
                    let secrets = try? JSONDecoder().decode([String: String].self, from: data) {
@@ -359,15 +359,6 @@ class PersistenceService: ObservableObject {
                 }
                 
                 return nil
-            }
-        } else {
-            // Fallback: load from legacy UserDefaults JSON blob (old format) and migrate
-            if let data = UserDefaults.standard.data(forKey: providersKey),
-               let decoded = try? JSONDecoder().decode([Provider].self, from: data) {
-                providers = decoded
-                // Immediately re-save in new secure format
-                saveProviders()
-                UserDefaults.standard.removeObject(forKey: providersKey)
             }
         }
 

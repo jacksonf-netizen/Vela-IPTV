@@ -11,7 +11,7 @@
 	<key>CFBundleIconFile</key>
 	<string>AppIcon</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.vela.app</string>
+	<string>com.velaiptv.app</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -31,5 +31,9 @@
 	</dict>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>SUFeedURL</key>
+	<string>https://your-github-username.github.io/Vela/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>PLACEHOLDER_PUBLIC_KEY</string>
 </dict>
 </plist>

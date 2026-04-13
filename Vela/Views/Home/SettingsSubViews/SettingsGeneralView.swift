@@ -28,7 +28,7 @@ struct SettingsGeneralView: View {
             
             SettingsGroup(title: "Maintenance") {
                 VStack(spacing: 0) {
-                    SettingsRow(title: "Software Update", subtitle: "Check for newer versions of Vela.") {
+                    SettingsRow(title: "Software Update", subtitle: "Check for newer versions of Vela IPTV.") {
                         Button {
                             UpdaterViewModel().checkForUpdates()
                         } label: {
