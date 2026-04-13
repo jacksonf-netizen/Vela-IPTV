@@ -125,9 +125,6 @@ struct HomeView: View {
             if let provider = activeProvider {
                 channelVM.setup(credentials: provider.credentials)
                 await channelVM.loadCategories()
-                if persistence.recents.isEmpty {
-                    selectedSection = .category(nil, providerId: provider.id)
-                }
             }
         }
         .onChange(of: selectedSection) { _, newSection in
