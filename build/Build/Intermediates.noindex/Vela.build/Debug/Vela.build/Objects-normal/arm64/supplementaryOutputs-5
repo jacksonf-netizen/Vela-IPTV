@@ -1,0 +1,23 @@
+{
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/SettingsSubViews/SettingsAppearanceView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.dia",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.swiftdeps"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/SettingsSubViews/SettingsGeneralView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.dia",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.swiftdeps"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/SettingsSubViews/SettingsKeysView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.dia",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.swiftdeps"
+  }
+}

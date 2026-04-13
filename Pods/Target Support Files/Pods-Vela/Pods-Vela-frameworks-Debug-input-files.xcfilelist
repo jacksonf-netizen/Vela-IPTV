@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-Vela/Pods-Vela-frameworks.sh
+${PODS_ROOT}/Sparkle/Sparkle.framework
+${PODS_XCFRAMEWORKS_BUILD_DIR}/VLCKit/VLCKit.framework/VLCKit

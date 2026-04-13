@@ -1,0 +1,23 @@
+{
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Resources/ColorExtensions.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.dia",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.swiftdeps"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/ViewModels/ChannelViewModel.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.dia",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.swiftdeps"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/EPGGridView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.dia",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.swiftdeps"
+  }
+}

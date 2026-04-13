@@ -1,0 +1,319 @@
+{
+  "" : {
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Vela-primary.dia",
+    "emit-module-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Vela-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Vela-primary-emit-module.dia",
+    "pch" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Vela-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Vela-primary.swiftdeps"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Models/Channel.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Channel.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Channel.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Channel.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/Channel.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Channel.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Channel.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Channel.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/Channel~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Models/StreamModels.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/StreamModels.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/StreamModels.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/StreamModels.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/StreamModels.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/StreamModels.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/StreamModels.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/StreamModels.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/StreamModels~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Models/VelaSettings.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSettings.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSettings.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSettings.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSettings.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSettings.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSettings.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSettings.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSettings~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Models/XtreamCredentials.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCredentials.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCredentials.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCredentials.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCredentials.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCredentials.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCredentials.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCredentials.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCredentials~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Resources/ColorExtensions.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ColorExtensions~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Services/PersistenceService.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PersistenceService.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PersistenceService.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PersistenceService.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/PersistenceService.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PersistenceService.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PersistenceService.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PersistenceService.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PersistenceService~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Services/XtreamCodesService.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCodesService.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCodesService.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCodesService.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCodesService.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCodesService.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCodesService.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCodesService.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/XtreamCodesService~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/VelaApp.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaApp.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaApp.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaApp.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaApp.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaApp.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaApp.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaApp.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaApp~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/ViewModels/AuthViewModel.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/AuthViewModel.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/AuthViewModel.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/AuthViewModel.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/AuthViewModel.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/AuthViewModel.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/AuthViewModel.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/AuthViewModel.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/AuthViewModel~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/ViewModels/ChannelViewModel.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelViewModel~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/ViewModels/EPGViewModel.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGViewModel.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGViewModel.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGViewModel.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGViewModel.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGViewModel.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGViewModel.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGViewModel.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGViewModel~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Components/VelaSpinner.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSpinner.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSpinner.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSpinner.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSpinner.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSpinner.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSpinner.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSpinner.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaSpinner~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Components/VelaThemeView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaThemeView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaThemeView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaThemeView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaThemeView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaThemeView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaThemeView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaThemeView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VelaThemeView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Components/VisualEffectView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VisualEffectView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VisualEffectView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VisualEffectView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/VisualEffectView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VisualEffectView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VisualEffectView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VisualEffectView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/VisualEffectView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Favorites/FavoritesView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/FavoritesView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/FavoritesView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/FavoritesView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/FavoritesView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/FavoritesView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/FavoritesView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/FavoritesView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/FavoritesView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/ChannelGridView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelGridView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelGridView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelGridView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelGridView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelGridView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelGridView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelGridView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/ChannelGridView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/EPGGridView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/EPGGridView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/HomeView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/HomeView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/HomeView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/HomeView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/HomeView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/HomeView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/HomeView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/HomeView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/HomeView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/SettingsSubViews/SettingsAppearanceView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsAppearanceView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/SettingsSubViews/SettingsGeneralView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsGeneralView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/SettingsSubViews/SettingsKeysView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsKeysView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/SettingsSubViews/SettingsPlaybackView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaybackView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaybackView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaybackView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaybackView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaybackView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaybackView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaybackView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaybackView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/SettingsSubViews/SettingsPlaylistsView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaylistsView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaylistsView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaylistsView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaylistsView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaylistsView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaylistsView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaylistsView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsPlaylistsView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/SettingsSubViews/SettingsTVGuideView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsTVGuideView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsTVGuideView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsTVGuideView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsTVGuideView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsTVGuideView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsTVGuideView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsTVGuideView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsTVGuideView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/SettingsView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SettingsView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Home/SidebarView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SidebarView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SidebarView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SidebarView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/SidebarView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SidebarView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SidebarView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SidebarView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/SidebarView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Login/LoginView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/LoginView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/LoginView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/LoginView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/LoginView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/LoginView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/LoginView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/LoginView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/LoginView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Player/PlayerView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PlayerView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PlayerView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PlayerView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/PlayerView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PlayerView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PlayerView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PlayerView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/PlayerView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/Recent/RecentView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RecentView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RecentView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RecentView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/RecentView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RecentView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RecentView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RecentView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RecentView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/Vela/Views/RootView.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RootView.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RootView.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RootView.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/RootView.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RootView.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RootView.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RootView.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/RootView~partial.swiftmodule"
+  },
+  "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "const-values" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftconstvalues",
+    "dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/GeneratedAssetSymbols.d",
+    "diagnostics" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/GeneratedAssetSymbols.dia",
+    "index-unit-output-path" : "/Vela.build/Debug/Vela.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "swift-dependencies" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/GeneratedAssetSymbols.swiftdeps",
+    "swiftmodule" : "/Users/jacksonroberts/Documents/Antigravity/Vela/build/Build/Intermediates.noindex/Vela.build/Debug/Vela.build/Objects-normal/arm64/GeneratedAssetSymbols~partial.swiftmodule"
+  }
+}

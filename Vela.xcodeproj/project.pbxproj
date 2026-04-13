@@ -1,0 +1,609 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		125C8EAE6A43573B6D561458 /* Pods_Vela.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12E86AEFB49901DFFFDCB9CC /* Pods_Vela.framework */; };
+		1AC418FD0C5244434C7DE8FB /* VisualEffectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92737E701ED5C7FAB13B922 /* VisualEffectView.swift */; };
+		1CF8833EC319512D1CDE0464 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956B77CEF7C287F6E96CC3FB /* ColorExtensions.swift */; };
+		26C5BB9A48C11E555E15B7E7 /* SettingsKeysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F019026370366043B9B890 /* SettingsKeysView.swift */; };
+		272719748939292D7B5730EF /* SidebarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 996531AAC2BD6B69FB885E74 /* SidebarView.swift */; };
+		30EB4F845754BE8351469407 /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C17108D6B51B1E4D13FEDA /* PersistenceService.swift */; };
+		33AFAB6A2F7579BA4C8EE8AF /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA67FF947196E8456CDBF1B /* AuthViewModel.swift */; };
+		33DB7195C033E08BB6991472 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6917B95B23D0835D82477A /* SettingsView.swift */; };
+		4188AE96354B4F6B02F395E5 /* ChannelGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F19055A820A664DFF512F23 /* ChannelGridView.swift */; };
+		4A2E5281197F8A8CC776EB6D /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA021FC1FCD4A383DA6C67B /* PlayerView.swift */; };
+		5763EC2AC89218E28DA8ADC2 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7A42D2E9D8596B2B9BA743 /* FavoritesView.swift */; };
+		59DD7A3EE9BB132536208291 /* SettingsPlaylistsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73681F49429B3374C2C3FC01 /* SettingsPlaylistsView.swift */; };
+		62C4CD924190D1B46FBC84C7 /* SettingsTVGuideView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 347157C5ECE016B5D2B1CF1A /* SettingsTVGuideView.swift */; };
+		7DAA0A5769371D713855FB45 /* SettingsGeneralView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54E327B1142380BAC370745 /* SettingsGeneralView.swift */; };
+		925D04ADDE9D321EBE8B534F /* XtreamCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8779948F4EC9971EC186739 /* XtreamCredentials.swift */; };
+		96AE2C4437164928DE74A035 /* EPGGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB72D0F56AE8ADE355F980F0 /* EPGGridView.swift */; };
+		9F87F5A6EF46E0AC23098D17 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAE8DB105A2294BF3C4AFD37 /* LoginView.swift */; };
+		A17F0FA3B64E407FAF9DC622 /* VelaThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B81ED0C725ED266746756C1 /* VelaThemeView.swift */; };
+		AFB4D56C4F9F3CD66A40BA9F /* EPGViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E345E8233CEF184EB2116454 /* EPGViewModel.swift */; };
+		B2E8EB5CFB742251468C8C5D /* VelaSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC1C1C6DD0888D7843F2A82 /* VelaSettings.swift */; };
+		B9E11F441A972F524BBE1B5C /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B291FFB358BCD58ED5E66BB7 /* ChannelViewModel.swift */; };
+		BC7A7EB381CD09314A16A2AF /* XtreamCodesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 634BDFF77636CE78A34BE1BD /* XtreamCodesService.swift */; };
+		CBA63AFE1CCAB5D727AE9D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 73D6A0C73E3B66203E7F1131 /* Assets.xcassets */; };
+		CE61A5DF4D0CB153F3812470 /* SettingsPlaybackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CEB3629749DFD7276781868 /* SettingsPlaybackView.swift */; };
+		E278660BF7D858CAB88D8586 /* StreamModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33586A9F0ADC747F3FECA37 /* StreamModels.swift */; };
+		E42F22E4470CFF6BD19930CB /* RecentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC48EB907B584107A3B97F9C /* RecentView.swift */; };
+		E49F805188441B2857A79949 /* VelaSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797CD0F42E0D51D827188C39 /* VelaSpinner.swift */; };
+		EBF5775260196C11B86341D3 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8494DF70D35E3992CCE17C8 /* RootView.swift */; };
+		EC6DD82A6EF12431573E3F2D /* Channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 254903BCBECD6CF4184D7432 /* Channel.swift */; };
+		EE446B215C538FDD8B9AD6C8 /* VelaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD82797C65EFBC63F3D18491 /* VelaApp.swift */; };
+		EE4D9D02512B6CD0C25F034E /* SettingsAppearanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661772014738F76278D901DF /* SettingsAppearanceView.swift */; };
+		FAC40050C43F42E063244ADA /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD2F0FE309B94ED4E1AD401 /* HomeView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0BA67FF947196E8456CDBF1B /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		12E86AEFB49901DFFFDCB9CC /* Pods_Vela.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Vela.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DD2F0FE309B94ED4E1AD401 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		254903BCBECD6CF4184D7432 /* Channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Channel.swift; sourceTree = "<group>"; };
+		347157C5ECE016B5D2B1CF1A /* SettingsTVGuideView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTVGuideView.swift; sourceTree = "<group>"; };
+		634BDFF77636CE78A34BE1BD /* XtreamCodesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XtreamCodesService.swift; sourceTree = "<group>"; };
+		661772014738F76278D901DF /* SettingsAppearanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsAppearanceView.swift; sourceTree = "<group>"; };
+		6A1FD52E63396FD13151F90F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		6EE4D98295ACE96B961BB8E7 /* Vela.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vela.entitlements; sourceTree = "<group>"; };
+		73681F49429B3374C2C3FC01 /* SettingsPlaylistsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPlaylistsView.swift; sourceTree = "<group>"; };
+		73D6A0C73E3B66203E7F1131 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		797CD0F42E0D51D827188C39 /* VelaSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelaSpinner.swift; sourceTree = "<group>"; };
+		7B81ED0C725ED266746756C1 /* VelaThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelaThemeView.swift; sourceTree = "<group>"; };
+		7CEB3629749DFD7276781868 /* SettingsPlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPlaybackView.swift; sourceTree = "<group>"; };
+		8F19055A820A664DFF512F23 /* ChannelGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelGridView.swift; sourceTree = "<group>"; };
+		94C17108D6B51B1E4D13FEDA /* PersistenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceService.swift; sourceTree = "<group>"; };
+		956B77CEF7C287F6E96CC3FB /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		996531AAC2BD6B69FB885E74 /* SidebarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarView.swift; sourceTree = "<group>"; };
+		A33586A9F0ADC747F3FECA37 /* StreamModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamModels.swift; sourceTree = "<group>"; };
+		A54E327B1142380BAC370745 /* SettingsGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGeneralView.swift; sourceTree = "<group>"; };
+		B291FFB358BCD58ED5E66BB7 /* ChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelViewModel.swift; sourceTree = "<group>"; };
+		B4E57AE73C70E61F8A50C9EB /* Pods-Vela.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vela.release.xcconfig"; path = "Target Support Files/Pods-Vela/Pods-Vela.release.xcconfig"; sourceTree = "<group>"; };
+		B8779948F4EC9971EC186739 /* XtreamCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XtreamCredentials.swift; sourceTree = "<group>"; };
+		BCA021FC1FCD4A383DA6C67B /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		BCC1C1C6DD0888D7843F2A82 /* VelaSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelaSettings.swift; sourceTree = "<group>"; };
+		C8494DF70D35E3992CCE17C8 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
+		C8F019026370366043B9B890 /* SettingsKeysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeysView.swift; sourceTree = "<group>"; };
+		CA9E751FA750FC929ADEA3E9 /* Pods-Vela.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Vela.debug.xcconfig"; path = "Target Support Files/Pods-Vela/Pods-Vela.debug.xcconfig"; sourceTree = "<group>"; };
+		CAE8DB105A2294BF3C4AFD37 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		CB72D0F56AE8ADE355F980F0 /* EPGGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGGridView.swift; sourceTree = "<group>"; };
+		D92737E701ED5C7FAB13B922 /* VisualEffectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectView.swift; sourceTree = "<group>"; };
+		DB48061975AD87F58267ABB3 /* Vela.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vela.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		DC48EB907B584107A3B97F9C /* RecentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentView.swift; sourceTree = "<group>"; };
+		DD82797C65EFBC63F3D18491 /* VelaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelaApp.swift; sourceTree = "<group>"; };
+		E345E8233CEF184EB2116454 /* EPGViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EPGViewModel.swift; sourceTree = "<group>"; };
+		EF6917B95B23D0835D82477A /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		EF7A42D2E9D8596B2B9BA743 /* FavoritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E3C11EBF1A8D9AB9C9C51EDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				125C8EAE6A43573B6D561458 /* Pods_Vela.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		04AC5DDCBA283B10225F2EBC /* Recent */ = {
+			isa = PBXGroup;
+			children = (
+				DC48EB907B584107A3B97F9C /* RecentView.swift */,
+			);
+			path = Recent;
+			sourceTree = "<group>";
+		};
+		04D00729D846E103301EE6C3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12E86AEFB49901DFFFDCB9CC /* Pods_Vela.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0EB71259E746293254BF4E48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CA9E751FA750FC929ADEA3E9 /* Pods-Vela.debug.xcconfig */,
+				B4E57AE73C70E61F8A50C9EB /* Pods-Vela.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		1A8B5B232EB3C9895FE781D4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CAE8DB105A2294BF3C4AFD37 /* LoginView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1C4AE35A05193BF5FE4A7EF4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				94C17108D6B51B1E4D13FEDA /* PersistenceService.swift */,
+				634BDFF77636CE78A34BE1BD /* XtreamCodesService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		483BF04F79F6240146C6B63F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DB48061975AD87F58267ABB3 /* Vela.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		49E7BC7081563A72B395F8EC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				797CD0F42E0D51D827188C39 /* VelaSpinner.swift */,
+				7B81ED0C725ED266746756C1 /* VelaThemeView.swift */,
+				D92737E701ED5C7FAB13B922 /* VisualEffectView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		5D1669A65BC11AD258E6A9C8 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0BA67FF947196E8456CDBF1B /* AuthViewModel.swift */,
+				B291FFB358BCD58ED5E66BB7 /* ChannelViewModel.swift */,
+				E345E8233CEF184EB2116454 /* EPGViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6CF3A9E0CB5431DE523880F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C8494DF70D35E3992CCE17C8 /* RootView.swift */,
+				49E7BC7081563A72B395F8EC /* Components */,
+				E70297CEA35A70D57A3FE452 /* Favorites */,
+				FBF215CF009FADCC3674D7CD /* Home */,
+				1A8B5B232EB3C9895FE781D4 /* Login */,
+				C047CCD4FB5F3D8268E7BF16 /* Player */,
+				04AC5DDCBA283B10225F2EBC /* Recent */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		76FBB74658D664F4F3F40A89 /* Vela */ = {
+			isa = PBXGroup;
+			children = (
+				73D6A0C73E3B66203E7F1131 /* Assets.xcassets */,
+				6A1FD52E63396FD13151F90F /* Info.plist */,
+				6EE4D98295ACE96B961BB8E7 /* Vela.entitlements */,
+				DD82797C65EFBC63F3D18491 /* VelaApp.swift */,
+				A1699D7897A6FA60B5DC4E26 /* Models */,
+				DE70DEAC71713F95D9C3A38A /* Resources */,
+				1C4AE35A05193BF5FE4A7EF4 /* Services */,
+				5D1669A65BC11AD258E6A9C8 /* ViewModels */,
+				6CF3A9E0CB5431DE523880F7 /* Views */,
+			);
+			path = Vela;
+			sourceTree = "<group>";
+		};
+		8D8AC28433B2AC935501E5A2 = {
+			isa = PBXGroup;
+			children = (
+				76FBB74658D664F4F3F40A89 /* Vela */,
+				483BF04F79F6240146C6B63F /* Products */,
+				0EB71259E746293254BF4E48 /* Pods */,
+				04D00729D846E103301EE6C3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		A1699D7897A6FA60B5DC4E26 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				254903BCBECD6CF4184D7432 /* Channel.swift */,
+				A33586A9F0ADC747F3FECA37 /* StreamModels.swift */,
+				BCC1C1C6DD0888D7843F2A82 /* VelaSettings.swift */,
+				B8779948F4EC9971EC186739 /* XtreamCredentials.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		C047CCD4FB5F3D8268E7BF16 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				BCA021FC1FCD4A383DA6C67B /* PlayerView.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		DE70DEAC71713F95D9C3A38A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				956B77CEF7C287F6E96CC3FB /* ColorExtensions.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E70297CEA35A70D57A3FE452 /* Favorites */ = {
+			isa = PBXGroup;
+			children = (
+				EF7A42D2E9D8596B2B9BA743 /* FavoritesView.swift */,
+			);
+			path = Favorites;
+			sourceTree = "<group>";
+		};
+		FB7672F19F34560ACDAB734D /* SettingsSubViews */ = {
+			isa = PBXGroup;
+			children = (
+				661772014738F76278D901DF /* SettingsAppearanceView.swift */,
+				A54E327B1142380BAC370745 /* SettingsGeneralView.swift */,
+				C8F019026370366043B9B890 /* SettingsKeysView.swift */,
+				7CEB3629749DFD7276781868 /* SettingsPlaybackView.swift */,
+				73681F49429B3374C2C3FC01 /* SettingsPlaylistsView.swift */,
+				347157C5ECE016B5D2B1CF1A /* SettingsTVGuideView.swift */,
+			);
+			path = SettingsSubViews;
+			sourceTree = "<group>";
+		};
+		FBF215CF009FADCC3674D7CD /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				8F19055A820A664DFF512F23 /* ChannelGridView.swift */,
+				CB72D0F56AE8ADE355F980F0 /* EPGGridView.swift */,
+				1DD2F0FE309B94ED4E1AD401 /* HomeView.swift */,
+				EF6917B95B23D0835D82477A /* SettingsView.swift */,
+				996531AAC2BD6B69FB885E74 /* SidebarView.swift */,
+				FB7672F19F34560ACDAB734D /* SettingsSubViews */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		887543FE98EDDB51C0D26FB2 /* Vela */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6E36DFB38ED9B78C5432D865 /* Build configuration list for PBXNativeTarget "Vela" */;
+			buildPhases = (
+				DBF468B1F71F4A6C79C42008 /* [CP] Check Pods Manifest.lock */,
+				41EE8B5767B0C17BE620D5EB /* Sources */,
+				D2CBC3C0A47F2DDAC075D2B2 /* Resources */,
+				E3C11EBF1A8D9AB9C9C51EDC /* Frameworks */,
+				6FC4B009D214E751A7637EE2 /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Vela;
+			productName = Vela;
+			productReference = DB48061975AD87F58267ABB3 /* Vela.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7FD476A6B78E6892F5E407ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					887543FE98EDDB51C0D26FB2 = {
+						DevelopmentTeam = "";
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 070106BC6C9C9A3557F945E6 /* Build configuration list for PBXProject "Vela" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 8D8AC28433B2AC935501E5A2;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 483BF04F79F6240146C6B63F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				887543FE98EDDB51C0D26FB2 /* Vela */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D2CBC3C0A47F2DDAC075D2B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CBA63AFE1CCAB5D727AE9D65 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6FC4B009D214E751A7637EE2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vela/Pods-Vela-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Vela/Pods-Vela-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Vela/Pods-Vela-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBF468B1F71F4A6C79C42008 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Vela-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		41EE8B5767B0C17BE620D5EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				33AFAB6A2F7579BA4C8EE8AF /* AuthViewModel.swift in Sources */,
+				EC6DD82A6EF12431573E3F2D /* Channel.swift in Sources */,
+				4188AE96354B4F6B02F395E5 /* ChannelGridView.swift in Sources */,
+				B9E11F441A972F524BBE1B5C /* ChannelViewModel.swift in Sources */,
+				1CF8833EC319512D1CDE0464 /* ColorExtensions.swift in Sources */,
+				96AE2C4437164928DE74A035 /* EPGGridView.swift in Sources */,
+				AFB4D56C4F9F3CD66A40BA9F /* EPGViewModel.swift in Sources */,
+				5763EC2AC89218E28DA8ADC2 /* FavoritesView.swift in Sources */,
+				FAC40050C43F42E063244ADA /* HomeView.swift in Sources */,
+				9F87F5A6EF46E0AC23098D17 /* LoginView.swift in Sources */,
+				30EB4F845754BE8351469407 /* PersistenceService.swift in Sources */,
+				4A2E5281197F8A8CC776EB6D /* PlayerView.swift in Sources */,
+				E42F22E4470CFF6BD19930CB /* RecentView.swift in Sources */,
+				EBF5775260196C11B86341D3 /* RootView.swift in Sources */,
+				EE4D9D02512B6CD0C25F034E /* SettingsAppearanceView.swift in Sources */,
+				7DAA0A5769371D713855FB45 /* SettingsGeneralView.swift in Sources */,
+				26C5BB9A48C11E555E15B7E7 /* SettingsKeysView.swift in Sources */,
+				CE61A5DF4D0CB153F3812470 /* SettingsPlaybackView.swift in Sources */,
+				59DD7A3EE9BB132536208291 /* SettingsPlaylistsView.swift in Sources */,
+				62C4CD924190D1B46FBC84C7 /* SettingsTVGuideView.swift in Sources */,
+				33DB7195C033E08BB6991472 /* SettingsView.swift in Sources */,
+				272719748939292D7B5730EF /* SidebarView.swift in Sources */,
+				E278660BF7D858CAB88D8586 /* StreamModels.swift in Sources */,
+				EE446B215C538FDD8B9AD6C8 /* VelaApp.swift in Sources */,
+				B2E8EB5CFB742251468C8C5D /* VelaSettings.swift in Sources */,
+				E49F805188441B2857A79949 /* VelaSpinner.swift in Sources */,
+				A17F0FA3B64E407FAF9DC622 /* VelaThemeView.swift in Sources */,
+				1AC418FD0C5244434C7DE8FB /* VisualEffectView.swift in Sources */,
+				BC7A7EB381CD09314A16A2AF /* XtreamCodesService.swift in Sources */,
+				925D04ADDE9D321EBE8B534F /* XtreamCredentials.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1CEE218FF8A747D74AC0ED38 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B4E57AE73C70E61F8A50C9EB /* Pods-Vela.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Vela/Vela.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Vela/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_NAME = "Vela IPTV";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		476CFC287C549CE5B64C8F41 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vela.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+		D79908D40D80D98CCA71B49C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.vela.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		D7AB7837F21C8FEF021F50B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA9E751FA750FC929ADEA3E9 /* Pods-Vela.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Vela/Vela.entitlements;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = Vela/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_NAME = "Vela IPTV";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		070106BC6C9C9A3557F945E6 /* Build configuration list for PBXProject "Vela" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				476CFC287C549CE5B64C8F41 /* Debug */,
+				D79908D40D80D98CCA71B49C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6E36DFB38ED9B78C5432D865 /* Build configuration list for PBXNativeTarget "Vela" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D7AB7837F21C8FEF021F50B9 /* Debug */,
+				1CEE218FF8A747D74AC0ED38 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7FD476A6B78E6892F5E407ED /* Project object */;
+}

@@ -1,0 +1,6 @@
+Target dependency graph (3 targets)
+Target 'Vela' in project 'Vela'
+➜ Implicit dependency on target 'Pods-Vela' in project 'Pods' via file 'Pods_Vela.framework' in build phase 'Link Binary'
+Target 'Pods-Vela' in project 'Pods'
+➜ Explicit dependency on target 'VLCKit' in project 'Pods'
+Target 'VLCKit' in project 'Pods' (no dependencies)
