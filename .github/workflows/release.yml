@@ -36,7 +36,8 @@ jobs:
             -workspace "Vela IPTV.xcworkspace" \
             -scheme "Vela" \
             -configuration Release \
-            -archivePath build/Vela.xcarchive \
+            -archivePath "build/Vela.xcarchive" \
+            -destination "generic/platform=macOS" \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
             CODE_SIGN_IDENTITY="" \
@@ -44,8 +45,8 @@ jobs:
 
       - name: Export Application
         run: |
-          # Copy the built app from the archive to the build folder
-          cp -R build/Vela.xcarchive/Products/Applications/Vela.app build/
+          # The product name is "Vela IPTV", so the app folder will have that name
+          cp -R "build/Vela.xcarchive/Products/Applications/Vela IPTV.app" "build/"
 
       - name: Create DMG
         run: |

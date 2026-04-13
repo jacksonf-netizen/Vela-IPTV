@@ -2,7 +2,7 @@
 
 # Configuration
 APP_NAME="Vela IPTV"
-APP_PATH="build/Vela.app"
+APP_PATH="build/Vela IPTV.app"
 DMG_NAME="VelaIPTV.dmg"
 DMG_PATH="build/$DMG_NAME"
 VOLUME_NAME="Vela IPTV Installer"
