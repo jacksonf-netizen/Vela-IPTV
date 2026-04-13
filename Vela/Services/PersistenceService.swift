@@ -167,10 +167,28 @@ class PersistenceService: ObservableObject {
         let idKey = pid.uuidString
         let previouslyKnown = knownCategories[idKey]
         
+        // Auto-hide master "All" categories to prevent landing on cluttered lists
+        let allCategoryPatterns = ["all", "all channels", "toute", "tout", "everything", "all tv"]
+        let idsToAutoHide = Set(cats.filter { cat in
+            let name = cat.categoryName.lowercased()
+            return allCategoryPatterns.contains { pattern in
+                name == pattern || name.contains(pattern)
+            }
+        }.map { $0.categoryId })
+
         if previouslyKnown == nil {
-            // First time seeing this provider's categories, remember them all but don't hide
+            // First time seeing this provider's categories
             knownCategories[idKey] = incomingIds
             saveKnownCategoriesSync()
+            
+            // Hide "All" categories immediately
+            if !idsToAutoHide.isEmpty {
+                var hidden = allHiddenCategories[idKey] ?? []
+                hidden.formUnion(idsToAutoHide)
+                allHiddenCategories[idKey] = hidden
+                if activeProviderId == pid { hiddenCategoryIds = hidden }
+                saveHiddenCategoriesSync()
+            }
         } else if let prev = previouslyKnown {
             let newIds = incomingIds.subtracting(prev)
             if !newIds.isEmpty {
@@ -179,16 +197,17 @@ class PersistenceService: ObservableObject {
                 saveKnownCategoriesSync()
                 
                 // If auto-hide is enabled, hide the new ones
+                var hidden = allHiddenCategories[idKey] ?? []
                 if autoHideNewCategories {
-                    var hidden = allHiddenCategories[idKey] ?? []
                     hidden.formUnion(newIds)
-                    allHiddenCategories[idKey] = hidden
-                    
-                    if activeProviderId == pid {
-                        hiddenCategoryIds = hidden
-                    }
-                    saveHiddenCategoriesSync()
                 }
+                
+                // Always ensure newly appeared "All" categories are hidden
+                hidden.formUnion(idsToAutoHide)
+                
+                allHiddenCategories[idKey] = hidden
+                if activeProviderId == pid { hiddenCategoryIds = hidden }
+                saveHiddenCategoriesSync()
             }
         }
     }

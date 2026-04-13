@@ -6,10 +6,23 @@ struct HomeView: View {
     @ObservedObject var authVM: AuthViewModel
     @ObservedObject private var persistence = PersistenceService.shared
     @StateObject private var channelVM = ChannelViewModel()
-    @State private var selectedSection: SidebarSection = .recents
+    @State private var selectedSection: SidebarSection
     @State private var selectedChannel: Channel? = nil
     @State private var showPlayer = false
     @State private var columnVisibility = NavigationSplitViewVisibility.all
+
+    init(authVM: AuthViewModel) {
+        self.authVM = authVM
+        
+        // Initialize startup section based on user settings
+        let startup = PersistenceService.shared.settings.startupScreen
+        switch startup {
+        case .recents:
+            _selectedSection = State(initialValue: .recents)
+        case .favorites:
+            _selectedSection = State(initialValue: .favorites)
+        }
+    }
 
     var activeProvider: Provider? { persistence.activeProvider }
 

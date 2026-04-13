@@ -3,9 +3,8 @@ import Foundation
 // MARK: - Settings Enums
 enum StartupScreen: String, Codable, CaseIterable, Identifiable {
     var id: String { rawValue }
-    case lastChannel = "Last Watched Channel"
-    case tvGuide = "TV Guide"
-    case home = "Home Screen"
+    case recents = "Recently Watched"
+    case favorites = "Favorites"
 }
 
 enum FontSizeScale: String, Codable, CaseIterable, Identifiable {
@@ -49,8 +48,7 @@ enum ThemeMode: String, Codable, CaseIterable, Identifiable {
 // MARK: - Config Struct
 struct VelaIPTVSettings: Codable, Equatable {
     // 1. General
-    var startupScreen: StartupScreen = .home
-    var resumeLastChannel: Bool = true
+    var startupScreen: StartupScreen = .recents
     
     // 2. Appearance
     var fontSize: FontSizeScale = .normal

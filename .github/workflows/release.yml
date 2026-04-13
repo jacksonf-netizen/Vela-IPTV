@@ -1,0 +1,65 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+jobs:
+  build:
+    runs-on: macos-14
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install Tools
+        run: |
+          brew install xcodegen
+          sudo gem install cocoapods
+
+      - name: Generate Project
+        run: |
+          xcodegen generate
+          export LANG=en_US.UTF-8
+          pod install
+
+      - name: Build Application
+        run: |
+          mkdir -p build
+          xcodebuild archive \
+            -workspace "Vela IPTV.xcworkspace" \
+            -scheme "Vela" \
+            -configuration Release \
+            -archivePath build/Vela.xcarchive \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            AD_HOC_CODE_SIGNING_ALLOWED=YES
+
+      - name: Export Application
+        run: |
+          # Copy the built app from the archive to the build folder
+          cp -R build/Vela.xcarchive/Products/Applications/Vela.app build/
+
+      - name: Create DMG
+        run: |
+          chmod +x scripts/create_dmg.sh
+          ./scripts/create_dmg.sh
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: build/VelaIPTV.dmg
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

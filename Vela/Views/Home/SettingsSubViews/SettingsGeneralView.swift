@@ -17,12 +17,6 @@ struct SettingsGeneralView: View {
                         .frame(width: 180)
                     }
                     
-                    Divider().background(Color.white.opacity(0.06))
-                    
-                    SettingsRow(title: "Resume last channel", subtitle: "Instantly resume what you were watching previously.") {
-                        Toggle("", isOn: $persistence.settings.resumeLastChannel)
-                            .toggleStyle(.switch)
-                    }
                 }
             }
             
