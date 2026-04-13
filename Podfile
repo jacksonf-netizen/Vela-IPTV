@@ -1,5 +1,5 @@
 project 'Vela IPTV.xcodeproj'
-platform :osx, '14.0'
+platform :osx, '15.0'
 use_modular_headers!
 
 target 'Vela' do
@@ -13,7 +13,7 @@ post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
       config.build_settings['ENABLE_BITCODE'] = 'NO'
-      config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '14.0'
+      config.build_settings['MACOSX_DEPLOYMENT_TARGET'] = '15.0'
     end
   end
 end

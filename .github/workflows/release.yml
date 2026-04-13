@@ -38,9 +38,14 @@ jobs:
             -configuration Release \
             -destination "generic/platform=macOS" \
             CONFIGURATION_BUILD_DIR="$(pwd)/build" \
+            ONLY_ACTIVE_ARCH=NO \
+            ARCHS="arm64" \
             CODE_SIGN_IDENTITY="-" \
             CODE_SIGNING_REQUIRED=YES \
             CODE_SIGNING_ALLOWED=YES
+          
+          echo "Deep signing the application bundle to fix embedded framework crashes..."
+          codesign --force --deep --sign - "build/Vela IPTV.app"
 
       - name: Create DMG
         run: |
