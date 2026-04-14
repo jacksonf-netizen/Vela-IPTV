@@ -1,6 +1,8 @@
 # Vela IPTV
 Vela IPTV is a modern and minimalist IPTV player designed specifically for macOS.
 
+Note: as of right now there is no VOD support but it may come in the future
+
 ---
 
 ## ⚠️ IMPORTANT: LEGAL DISCLAIMER
