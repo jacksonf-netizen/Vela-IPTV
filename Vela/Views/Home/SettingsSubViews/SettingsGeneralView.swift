@@ -24,7 +24,7 @@ struct SettingsGeneralView: View {
                 VStack(spacing: 0) {
                     SettingsRow(title: "Software Update", subtitle: "Check for newer versions of Vela IPTV.") {
                         Button {
-                            UpdaterViewModel().checkForUpdates()
+                            UpdaterViewModel.shared.checkForUpdates()
                         } label: {
                             Text("Check for Updates...")
                                 .font(.system(size: 12, weight: .semibold))

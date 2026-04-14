@@ -776,6 +776,7 @@ enum BufferProfile: String, CaseIterable {
 // MARK: – Software Update ViewModel
 /// Manages the application update lifecycle using the Sparkle framework.
 final class UpdaterViewModel: ObservableObject {
+    static let shared = UpdaterViewModel()
     @Published var canCheckForUpdates = false
     
     private let updaterController: SPUStandardUpdaterController
