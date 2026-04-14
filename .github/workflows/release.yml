@@ -52,6 +52,36 @@ jobs:
           chmod +x scripts/create_dmg.sh
           ./scripts/create_dmg.sh
 
+      - name: Generate Sparkle Appcast
+        env:
+          SPARKLE_PRIVATE_KEY: ${{ secrets.SPARKLE_PRIVATE_KEY }}
+        run: |
+          # 1. Prepare Key File
+          echo "$SPARKLE_PRIVATE_KEY" > sparkle_key.txt
+          
+          # 2. Sparkle's tool expects the DMG to be in a flat folder
+          mkdir -p sparkle_deployment
+          cp build/VelaIPTV.dmg sparkle_deployment/
+          
+          # 3. Generate the XML map (appcast)
+          ./Pods/Sparkle/bin/generate_appcast sparkle_deployment --ed-key-file sparkle_key.txt
+          
+          # 4. Clean up the private key file immediately
+          rm sparkle_key.txt
+          
+          # 5. Move files to /docs for GitHub Pages hosting
+          mkdir -p docs
+          cp sparkle_deployment/appcast.xml docs/
+          cp build/VelaIPTV.dmg docs/
+          
+      - name: Deploy Update Map to GitHub Pages
+        run: |
+          git config --global user.name "GitHub Action Bot"
+          git config --global user.email "actions@github.com"
+          git add docs/appcast.xml docs/VelaIPTV.dmg
+          git commit -m "Automated update: Publish appcast and DMG for ${{ github.ref_name }}" || echo "No changes to commit"
+          git push origin main
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')

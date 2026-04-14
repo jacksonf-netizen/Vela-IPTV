@@ -32,15 +32,15 @@ targets:
         CFBundleName: Vela IPTV
         CFBundleDisplayName: Vela IPTV
         CFBundleIdentifier: com.velaiptv.app
-        CFBundleVersion: "1"
-        CFBundleShortVersionString: "1.0"
+        CFBundleVersion: "3"
+        CFBundleShortVersionString: "1.0.3"
         CFBundleIconFile: AppIcon
         NSAppTransportSecurity:
           NSAllowsArbitraryLoads: true
         LSMinimumSystemVersion: "15.0"
         NSPrincipalClass: NSApplication
-        SUFeedURL: "https://your-github-username.github.io/Vela/appcast.xml"
-        SUPublicEDKey: "PLACEHOLDER_PUBLIC_KEY"
+        SUFeedURL: "https://jacksonf-netizen.github.io/Vela-IPTV/appcast.xml"
+        SUPublicEDKey: "f1upqhkOxe1bU7kzjvWl9iNZWEvlmDCSu2xwbi9hrVo="
     entitlements:
       path: VelaIPTV.entitlements
       properties:
