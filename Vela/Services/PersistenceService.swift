@@ -26,8 +26,7 @@ class PersistenceService: ObservableObject {
     private var hiddenCatsSaveWork: DispatchWorkItem?
     private let saveQueue = DispatchQueue(label: "com.velaiptv.persistence.save", qos: .utility)
     
-    // Obfuscation key - just to deter casual inspection
-    private let obfuscationKey: [UInt8] = [0x56, 0x65, 0x6C, 0x61, 0x49, 0x50, 0x54, 0x56] // "VelaIPTV"
+
 
     @Published var providers: [Provider] = []
     @Published var activeProviderId: UUID? = nil
@@ -288,13 +287,6 @@ class PersistenceService: ObservableObject {
         }
     }
 
-    private func obfuscate(_ data: Data) -> Data {
-        var result = Data()
-        for i in 0..<data.count {
-            result.append(data[i] ^ obfuscationKey[i % obfuscationKey.count])
-        }
-        return result
-    }
 
     // MARK: - Keychain Secure Handlers
 
@@ -365,37 +357,7 @@ class PersistenceService: ObservableObject {
                         password: secrets["password"] ?? ""
                     )
                 }
-                
-                // 2. Fallback to insecure obfuscated migration
-                let localKey = secretsPrefix + idStr
-                if let base64 = UserDefaults.standard.string(forKey: localKey),
-                   let data = Data(base64Encoded: base64) {
-                    let deobfuscated = obfuscate(data)
-                    if let secrets = try? JSONDecoder().decode([String: String].self, from: deobfuscated) {
-                        let p = Provider(
-                            id: id,
-                            name: name,
-                            serverURL: secrets["serverURL"] ?? "",
-                            username: secrets["username"] ?? "",
-                            password: secrets["password"] ?? ""
-                        )
-                        
-                        // Immediately migrate to Secure Keychain
-                        let secretsDict: [String: String] = [
-                            "serverURL": p.serverURL,
-                            "username": p.username,
-                            "password": p.password
-                        ]
-                        if let sData = try? JSONEncoder().encode(secretsDict),
-                           let jsonString = String(data: sData, encoding: .utf8) {
-                            saveToKeychain(account: keychainKey, data: jsonString)
-                        }
-                        
-                        // Destroy weak data
-                        UserDefaults.standard.removeObject(forKey: localKey)
-                        return p
-                    }
-                }
+
                 
                 return nil
             }

@@ -251,7 +251,9 @@ class GlobalSearchViewModel: ObservableObject {
                 }
             }
         } catch {
+            #if DEBUG
             print("Failed to fetch search channels for \(provider.name): \(error)")
+            #endif
         }
     }
 }
