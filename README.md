@@ -34,6 +34,13 @@ Because Vela is an independent community project, macOS will initially try to bl
 4. A popup will appear—click **Open** again.
 5. *If it still won't open:* Go to your Mac's **System Settings** > **Privacy & Security**, scroll all the way to the bottom, and click **"Open Anyway"**.
 
+### 4. Allow Keychain Access
+On your **first launch** and again **after each update**, macOS will show a popup asking for your computer password to securely save your IPTV credentials:
+
+> *"VelaIPTV wants to use your confidential information stored in Keychain"*
+
+**Click "Always Allow"** — this is completely safe and just lets the app automatically retrieve your saved login details without asking every time.
+
 ---
 
 ## 📝 License
