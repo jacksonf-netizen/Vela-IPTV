@@ -45,3 +45,9 @@ On your **first launch** and again **after each update**, macOS will show a popu
 
 ## 📝 License
 This project is released under the MIT License. Feel free to use and modify it for your personal use.
+
+## 🏗️ Technical Credits
+Vela IPTV is built using the following open-source libraries:
+- **[VLCKit](https://code.videolan.org/videolan/VLCKit)**: The powerful engine behind our video playback. Distributed under the [GNU LGPLv2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html) license.
+- **[Sparkle](https://sparkle-project.org/)**: Provides our seamless "Quit and Install" update experience. Distributed under the [MIT License](https://github.com/sparkle-project/Sparkle/blob/master/LICENSE).
+*Vela IPTV is not affiliated with VideoLAN or the VLC project.*
