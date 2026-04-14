@@ -74,7 +74,7 @@ jobs:
           git config --global user.email "actions@github.com"
           git add docs/appcast.xml docs/VelaIPTV.dmg
           git commit -m "Automated update: Publish appcast and DMG for ${{ github.ref_name }}" || echo "No changes to commit"
-          git push origin main
+          git push origin HEAD:main
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
