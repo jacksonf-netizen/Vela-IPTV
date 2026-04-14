@@ -11,6 +11,7 @@ struct SidebarView: View {
     @State private var isHoveringSettings = false
     @State private var isHoveringAdd = false
     @State private var expandedProviderIds: Set<UUID> = []
+    @ObservedObject private var updater = UpdaterViewModel.shared
 
     var body: some View {
         VStack(spacing: 0) {
@@ -172,6 +173,12 @@ struct SidebarView: View {
         .padding(.leading, 0)
         .sheet(isPresented: $isShowingSettings) {
             SettingsView(authVM: authVM, channelVM: channelVM)
+        }
+        .onChange(of: updater.shouldDismissUI) { _, shouldDismiss in
+            if shouldDismiss {
+                isShowingSettings = false
+                authVM.isShowingAddProvider = false
+            }
         }
     }
 }

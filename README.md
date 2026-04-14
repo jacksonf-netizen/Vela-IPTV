@@ -1,19 +1,49 @@
 # Vela IPTV
 Vela IPTV is a modern and minimalist IPTV player designed specifically for macOS.
+
 ---
+
+## ⚠️ IMPORTANT: LEGAL DISCLAIMER
+Vela IPTV is a **player only**. It does not provide any content, playlists, or streaming services.
+- **User Responsibility**: You must provide your own legal IPTV service credentials (Xtream Codes compatible).
+- **No Liability**: The developer of Vela IPTV is not responsible for any content viewed through the app, nor for any illegal use of the software. Users are responsible for ensuring their use of the app complies with all applicable laws and terms of service of their content providers.
+
+---
+
+## 🔒 Privacy & Security
+- **100% Local Storage**: Your login credentials, server URLs, and viewing history are stored **only on your Mac**. No data is ever sent to a cloud server, developer, or third party.
+- **Secure Keychain Access**: Vela uses the official macOS Keychain to encrypt and protect your passwords. 
+    - **Note**: When you first add an account, macOS will ask for your computer password to secure the data. **Please click "Always Allow"** so the app can securely log you in automatically next time.
+- **Direct Communication**: The app only communicates with the internet to fetch your streams and check for app updates.
+
+---
+
+## 🚀 Easy Installation Guide (No Tech Experience Required)
+
+### 1. Download
+Click [THIS LINK](https://github.com/jacksonf-netizen/Vela-IPTV/releases) to go to the download page. Look for the most recent version at the top and click on **VelaIPTV.dmg** to download it.
+
+### 2. Install
+Double-click the **VelaIPTV.dmg** file you just downloaded. A window will pop up—simply drag the **Vela IPTV** icon onto the **Applications** folder icon.
+
+### 3. First Launch (IMPORTANT)
+Because Vela is an independent community project, macOS will initially try to block it for your safety. Follow these simple steps to open it:
+1. Go to your **Applications** folder.
+2. **Right-Click** (or hold Control and click) on **Vela IPTV**.
+3. Select **Open** from the menu.
+4. A popup will appear—click **Open** again.
+5. *If it still won't open:* Go to your Mac's **System Settings** > **Privacy & Security**, scroll all the way to the bottom, and click **"Open Anyway"**.
+
+---
+
 ## ✨ Features
-- **Privacy First**: All credentials and viewing history are stored locally. No cloud sync, no tracking.
-- **Native macOS UI**: A beautiful, fluid interface built with SwiftUI, featuring native translucency and animations.
-- **Quick Access**: Instantly view your **Recently Watched** channels and **Favorites** directly from the sidebar.
-- **Xtream Codes API**: Supports multi-account login via the standard Xtream Codes platform.
-- **Smart Filtering**: Automatically hides cluttered "All Channels" master categories to keep your experience organized.
-- **High Performance**: Powered by VLCKit for smooth, high-quality streaming compatibility.
+- **Apple Silicon Native**: Built for M1, M2, M3, and M4 Macs for incredible speed and battery life.
+- **Native macOS Design**: A beautiful interface that feels like it belongs on your Mac, featuring smooth animations and glass-like translucency.
+- **Smart Organization**: Automatically hides cluttered categories to keep your channel list clean.
+- **Quick Access**: Your "Favorites" and "Recently Watched" channels are always one click away in the sidebar.
+- **Pro Performance**: Uses VLCKit (the engine behind VLC) for the most stable and high-quality video playback.
+
 ---
-## 🚀 Installation
-1.  Go to the [Releases](https://github.com/jacksonf-netizen/Vela/releases) page.
-2.  Download the latest **VelaIPTV.dmg** from the Assets section.
-3.  Open the DMG and drag **Vela IPTV** into your **Applications** folder.
-4.  **Important**: Because this is a community build, the first time you open the app, please **Right-Click -> Open** to bypass the macOS developer security check. You may also need to go to Settings > Privacy & Security and scroll down to the bottom and click "Open Anyway".
----
+
 ## 📝 License
 This project is released under the MIT License. Feel free to use and modify it for your personal use.

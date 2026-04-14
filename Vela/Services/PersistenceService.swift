@@ -795,18 +795,29 @@ enum BufferProfile: String, CaseIterable {
 
 // MARK: – Software Update ViewModel
 /// Manages the application update lifecycle using the Sparkle framework.
-final class UpdaterViewModel: ObservableObject {
+final class UpdaterViewModel: NSObject, ObservableObject, SPUUpdaterDelegate {
     static let shared = UpdaterViewModel()
     @Published var canCheckForUpdates = false
+    @Published var shouldDismissUI = false
     
     private let updaterController: SPUStandardUpdaterController
     
-    init() {
+    override init() {
+        super.init()
         // Initialize the standard updater controller.
-        updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: nil, userDriverDelegate: nil)
+        updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: self, userDriverDelegate: nil)
         
         updaterController.updater.publisher(for: \.canCheckForUpdates)
             .assign(to: &$canCheckForUpdates)
+            
+        // Fallback observer for the restart notification
+        NotificationCenter.default.addObserver(forName: NSNotification.Name("SUUpdaterWillRestartNotification"), object: nil, queue: .main) { [weak self] _ in
+            self?.shouldDismissUI = true
+        }
+    }
+    
+    func updaterWillRestart(_ updater: SPUUpdater) {
+        shouldDismissUI = true
     }
     
     func checkForUpdates() {
