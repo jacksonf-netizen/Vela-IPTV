@@ -778,14 +778,16 @@ final class UpdaterViewModel: NSObject, ObservableObject, SPUUpdaterDelegate {
         }
     }
     
-    func updaterWillRestart(_ updater: SPUUpdater) {
+    func updater(_ updater: SPUUpdater, shouldPostponeRelaunchForUpdate item: SUAppcastItem, untilInvokingBlock installHandler: @escaping () -> Void) -> Bool {
         DispatchQueue.main.async {
             self.shouldDismissUI = true
+            
             // Give SwiftUI time to animate the sheet closed, then let Sparkle take over
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                NSApp.terminate(nil)
+                installHandler()
             }
         }
+        return true // Tell Sparkle we are deliberately postponing the restart
     }
     
     func checkForUpdates() {
