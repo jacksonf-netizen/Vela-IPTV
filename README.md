@@ -18,10 +18,10 @@ Vela IPTV is a **player only**. It does not provide any content, playlists, or s
 
 ---
 
-## 🚀 Easy Installation Guide (No Tech Experience Required)
+## 🚀 Installation Guide
 
 ### 1. Download
-Click [THIS LINK](https://github.com/jacksonf-netizen/Vela-IPTV/releases) to go to the download page. Look for the most recent version at the top and click on **VelaIPTV.dmg** to download it.
+Click [RELEASES](https://github.com/jacksonf-netizen/Vela-IPTV/releases) to go to the download page. Look for the most recent version at the top and click on **VelaIPTV.dmg** to download it.
 
 ### 2. Install
 Double-click the **VelaIPTV.dmg** file you just downloaded. A window will pop up—simply drag the **Vela IPTV** icon onto the **Applications** folder icon.
@@ -33,15 +33,6 @@ Because Vela is an independent community project, macOS will initially try to bl
 3. Select **Open** from the menu.
 4. A popup will appear—click **Open** again.
 5. *If it still won't open:* Go to your Mac's **System Settings** > **Privacy & Security**, scroll all the way to the bottom, and click **"Open Anyway"**.
-
----
-
-## ✨ Features
-- **Apple Silicon Native**: Built for M1, M2, M3, and M4 Macs for incredible speed and battery life.
-- **Native macOS Design**: A beautiful interface that feels like it belongs on your Mac, featuring smooth animations and glass-like translucency.
-- **Smart Organization**: Automatically hides cluttered categories to keep your channel list clean.
-- **Quick Access**: Your "Favorites" and "Recently Watched" channels are always one click away in the sidebar.
-- **Pro Performance**: Uses VLCKit (the engine behind VLC) for the most stable and high-quality video playback.
 
 ---
 
