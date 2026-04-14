@@ -33,7 +33,7 @@ jobs:
           
           # Inject the version into project.yml
           sed -i '' "s/CFBundleShortVersionString: \".*\"/CFBundleShortVersionString: \"$VERSION\"/" project.yml
-          sed -i '' "s/CFBundleVersion: \".*\"/CFBundleVersion: \"$VERSION\"/" project.yml
+          sed -i '' "s/CFBundleVersion: \".*\"/CFBundleVersion: \"$GITHUB_RUN_NUMBER\"/" project.yml
 
       - name: Generate Project
         run: |
