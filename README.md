@@ -44,7 +44,7 @@ On your **first launch** and again **after each update**, macOS will show a popu
 ---
 
 ## 📝 License
-This project is released under the MIT License. Feel free to use and modify it for your personal use.
+This project is released under the MIT License.
 
 ## 🏗️ Technical Credits
 Vela IPTV is built using the following open-source libraries:
