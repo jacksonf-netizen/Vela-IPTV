@@ -1,0 +1,15 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Vela IPTV</title>
+        <item>
+            <title>1.0.3</title>
+            <pubDate>Tue, 14 Apr 2026 00:20:37 +0000</pubDate>
+            <sparkle:version>3</sparkle:version>
+            <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <enclosure url="https://jacksonf-netizen.github.io/Vela-IPTV/VelaIPTV.dmg" length="20701314" type="application/octet-stream" sparkle:edSignature="mf9dYCODEt0UaEAGSAsgnoEDc68cYnCTc4PcmVCcY++poKEo+0fRad047WMAW1SWIR/E5fNkMLZsEYsDA7TpBw=="/>
+        </item>
+    </channel>
+</rss>
