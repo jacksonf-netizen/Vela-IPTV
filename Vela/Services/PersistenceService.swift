@@ -800,7 +800,7 @@ final class UpdaterViewModel: NSObject, ObservableObject, SPUUpdaterDelegate {
     @Published var canCheckForUpdates = false
     @Published var shouldDismissUI = false
     
-    private let updaterController: SPUStandardUpdaterController
+    private var updaterController: SPUStandardUpdaterController!
     
     override init() {
         super.init()
