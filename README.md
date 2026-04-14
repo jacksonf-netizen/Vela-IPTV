@@ -13,7 +13,7 @@ Vela IPTV is a modern and minimalist IPTV player designed specifically for macOS
 1.  Go to the [Releases](https://github.com/jacksonf-netizen/Vela/releases) page.
 2.  Download the latest **VelaIPTV.dmg** from the Assets section.
 3.  Open the DMG and drag **Vela IPTV** into your **Applications** folder.
-4.  **Important**: Because this is a community build, the first time you open the app, please **Right-Click -> Open** to bypass the macOS developer security check.
+4.  **Important**: Because this is a community build, the first time you open the app, please **Right-Click -> Open** to bypass the macOS developer security check. You may also need to go to Settings > Privacy & Security and scroll down to the bottom and click "Open Anyway".
 ---
 ## 📝 License
 This project is released under the MIT License. Feel free to use and modify it for your personal use.
