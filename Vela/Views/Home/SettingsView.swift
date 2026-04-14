@@ -18,7 +18,6 @@ struct SettingsView: View {
         case categories = "Categories"
         case tvGuide = "TV Guide"
         case playback = "Playback"
-        case keys = "Keys"
         
         var icon: String {
             switch self {
@@ -28,7 +27,6 @@ struct SettingsView: View {
             case .categories: return "square.grid.2x2.fill"
             case .tvGuide: return "calendar.badge.clock"
             case .playback: return "play.circle.fill"
-            case .keys: return "keyboard.fill"
             }
         }
     }
@@ -105,8 +103,6 @@ struct SettingsView: View {
                         settingsScrollPane { SettingsTVGuideView() }
                     case .playback:
                         settingsScrollPane { SettingsPlaybackView() }
-                    case .keys:
-                        settingsScrollPane { SettingsKeysView() }
                     }
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
