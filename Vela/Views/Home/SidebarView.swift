@@ -15,7 +15,7 @@ struct SidebarView: View {
     var body: some View {
         VStack(spacing: 0) {
             ScrollView {
-                VStack(alignment: .leading, spacing: 6) {
+                LazyVStack(alignment: .leading, spacing: 6) {
 
                     // MARK: – Library
                     SidebarSectionHeader(title: "LIBRARY")
