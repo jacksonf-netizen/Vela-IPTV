@@ -26,7 +26,6 @@
 		7A75400E6978E93D6F1D75E6 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14E93CF2E05F8F9BF8A8F9A0 /* AuthViewModel.swift */; };
 		7C17A8C0C9600FC526FD56AE /* VelaIPTVThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7874FD509BE20BBFAC5BC99C /* VelaIPTVThemeView.swift */; };
 		8E3C3912BD07A3B1150F6997 /* Pods_Vela.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61D309BBCC2E6F2F94B6001F /* Pods_Vela.framework */; };
-		962CFD29A3C3ADC2DD3CDA02 /* SettingsKeysView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C883C312F263A88D3F036 /* SettingsKeysView.swift */; };
 		A15F177F1BB63DF14707EE6F /* ChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC700D49C0EB849FE2C02EC2 /* ChannelViewModel.swift */; };
 		A35741DFE75A10BA12913D5D /* XtreamCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F78B4E6AA0E1E9A0E6D8A6 /* XtreamCredentials.swift */; };
 		A3ADE5A446AD60E8EBFFBE0B /* PersistenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D951EC6B1E36E73458011809 /* PersistenceService.swift */; };
@@ -44,7 +43,6 @@
 /* Begin PBXFileReference section */
 		022DFA02E08673D7E5CF7645 /* SettingsPlaybackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPlaybackView.swift; sourceTree = "<group>"; };
 		1310F86397024A49C9D7325F /* SettingsGeneralView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsGeneralView.swift; sourceTree = "<group>"; };
-		137C883C312F263A88D3F036 /* SettingsKeysView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsKeysView.swift; sourceTree = "<group>"; };
 		143C5EC513C34C85F2883D9B /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		14E93CF2E05F8F9BF8A8F9A0 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		1BCCCC01A8883954999F7091 /* VelaIPTVSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VelaIPTVSettings.swift; sourceTree = "<group>"; };
@@ -242,7 +240,6 @@
 			children = (
 				E664BF8722017140547C0E40 /* SettingsAppearanceView.swift */,
 				1310F86397024A49C9D7325F /* SettingsGeneralView.swift */,
-				137C883C312F263A88D3F036 /* SettingsKeysView.swift */,
 				022DFA02E08673D7E5CF7645 /* SettingsPlaybackView.swift */,
 				AEB3B7309792AD1F60C899F7 /* SettingsPlaylistsView.swift */,
 				5CC918D3335269E471246705 /* SettingsTVGuideView.swift */,
@@ -391,7 +388,6 @@
 				C19765B3805459921D0F6C81 /* RootView.swift in Sources */,
 				79B7C0A189ABE0D0E30F2C46 /* SettingsAppearanceView.swift in Sources */,
 				D9DC5528BDB9DFA4BDB90838 /* SettingsGeneralView.swift in Sources */,
-				962CFD29A3C3ADC2DD3CDA02 /* SettingsKeysView.swift in Sources */,
 				07F51360A6117CC9DCDD3310 /* SettingsPlaybackView.swift in Sources */,
 				B03F4D09704AEE023C470217 /* SettingsPlaylistsView.swift in Sources */,
 				76C7D2B15ECCF3397998CEAE /* SettingsTVGuideView.swift in Sources */,

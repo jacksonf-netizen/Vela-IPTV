@@ -817,7 +817,13 @@ final class UpdaterViewModel: NSObject, ObservableObject, SPUUpdaterDelegate {
     }
     
     func updaterWillRestart(_ updater: SPUUpdater) {
-        shouldDismissUI = true
+        DispatchQueue.main.async {
+            self.shouldDismissUI = true
+            // Give SwiftUI time to animate the sheet closed, then let Sparkle take over
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                NSApp.terminate(nil)
+            }
+        }
     }
     
     func checkForUpdates() {
