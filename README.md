@@ -1,5 +1,5 @@
 # Vela IPTV
-Vela IPTV is a modern, minimalist, and privacy-focused IPTV player designed specifically for macOS. It offers a premium, glassmorphic interface that matches the Apple aesthetic while ensuring your data remains entirely on your own device.
+Vela IPTV is a modern and minimalist IPTV player designed specifically for macOS.
 ---
 ## ✨ Features
 - **Privacy First**: All credentials and viewing history are stored locally. No cloud sync, no tracking.
