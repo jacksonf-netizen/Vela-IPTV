@@ -23,6 +23,18 @@ jobs:
           brew update
           brew install xcodegen
 
+      - name: Sync App Version with GitHub Tag
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          # Strip "refs/tags/v" from the GitHub ref to get just the numbers (e.g., "1.0.4")
+          RAW_TAG=${GITHUB_REF#refs/tags/}
+          VERSION=${RAW_TAG#v}
+          echo "Detected GitHub Tag Version: $VERSION"
+          
+          # Inject the version into project.yml
+          sed -i '' "s/CFBundleShortVersionString: \".*\"/CFBundleShortVersionString: \"$VERSION\"/" project.yml
+          sed -i '' "s/CFBundleVersion: \".*\"/CFBundleVersion: \"$VERSION\"/" project.yml
+
       - name: Generate Project
         run: |
           xcodegen generate
