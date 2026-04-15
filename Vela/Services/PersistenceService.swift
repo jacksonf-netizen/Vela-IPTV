@@ -760,34 +760,15 @@ enum BufferProfile: String, CaseIterable {
 final class UpdaterViewModel: NSObject, ObservableObject, SPUUpdaterDelegate {
     static let shared = UpdaterViewModel()
     @Published var canCheckForUpdates = false
-    @Published var shouldDismissUI = false
     
     private var updaterController: SPUStandardUpdaterController!
     
     override init() {
         super.init()
-        // Initialize the standard updater controller.
         updaterController = SPUStandardUpdaterController(startingUpdater: true, updaterDelegate: self, userDriverDelegate: nil)
         
         updaterController.updater.publisher(for: \.canCheckForUpdates)
             .assign(to: &$canCheckForUpdates)
-            
-        // Fallback observer for the restart notification
-        NotificationCenter.default.addObserver(forName: NSNotification.Name("SUUpdaterWillRestartNotification"), object: nil, queue: .main) { [weak self] _ in
-            self?.shouldDismissUI = true
-        }
-    }
-    
-    func updater(_ updater: SPUUpdater, shouldPostponeRelaunchForUpdate item: SUAppcastItem, untilInvokingBlock installHandler: @escaping () -> Void) -> Bool {
-        DispatchQueue.main.async {
-            self.shouldDismissUI = true
-            
-            // Give SwiftUI time to animate the sheet closed, then let Sparkle take over
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                installHandler()
-            }
-        }
-        return true // Tell Sparkle we are deliberately postponing the restart
     }
     
     func checkForUpdates() {

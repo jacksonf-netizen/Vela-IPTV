@@ -174,12 +174,6 @@ struct SidebarView: View {
         .sheet(isPresented: $isShowingSettings) {
             SettingsView(authVM: authVM, channelVM: channelVM)
         }
-        .onChange(of: updater.shouldDismissUI) { _, shouldDismiss in
-            if shouldDismiss {
-                isShowingSettings = false
-                authVM.isShowingAddProvider = false
-            }
-        }
     }
 }
 
