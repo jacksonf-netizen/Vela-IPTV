@@ -132,14 +132,14 @@ struct PlayerView: View {
             isFavorite = persistence.isFavorite(currentChannel)
             persistence.addRecent(currentChannel)
             let provider = persistence.providers.first { $0.id == currentChannel.providerId } ?? persistence.activeProvider
-            if let creds = provider?.credentials {
-                vm.load(url: creds.streamURL(for: currentChannel), channel: currentChannel)
+            guard let creds = provider?.credentials else {
+                vm.state = .error("No provider configured. Please add a provider in Settings.")
+                return
             }
+            vm.load(url: creds.streamURL(for: currentChannel), channel: currentChannel)
             startControlsTimer()
             Task {
-                if let creds = provider?.credentials {
-                    currentEPG = try? await XtreamCodesService.shared.getEPG(credentials: creds, streamId: currentChannel.streamId).first
-                }
+                currentEPG = try? await XtreamCodesService.shared.getEPG(credentials: creds, streamId: currentChannel.streamId).first
             }
         }
         .onChange(of: currentChannel) { _, newChannel in
@@ -147,10 +147,12 @@ struct PlayerView: View {
             isFavorite = persistence.isFavorite(newChannel)
             persistence.addRecent(newChannel)
             let provider = persistence.providers.first { $0.id == newChannel.providerId } ?? persistence.activeProvider
-            if let creds = provider?.credentials {
-                vm.load(url: creds.streamURL(for: newChannel), channel: newChannel)
-                Task { currentEPG = try? await XtreamCodesService.shared.getEPG(credentials: creds, streamId: newChannel.streamId).first }
+            guard let creds = provider?.credentials else {
+                vm.state = .error("No provider configured. Please add a provider in Settings.")
+                return
             }
+            vm.load(url: creds.streamURL(for: newChannel), channel: newChannel)
+            Task { currentEPG = try? await XtreamCodesService.shared.getEPG(credentials: creds, streamId: newChannel.streamId).first }
         }
         .onDisappear { vm.stop() }
         .onHover { if $0 { startControlsTimer() } }
@@ -505,24 +507,27 @@ class PlayerViewModel: NSObject, ObservableObject, @preconcurrency VLCMediaPlaye
     func stop() {
         stallMonitorTask?.cancel()
         stallMonitorTask = nil
-        
+
         bufferingTask?.cancel()
         bufferingTask = nil
-        
+
         hasStartedPlaying = false
         isBuffering = false
-        
+
         forceDismissTask?.cancel()
         forceDismissTask = nil
-        
-        // Remove notification observers
-        if let player = mediaPlayer {
+
+        // Nil mediaPlayer BEFORE removing observers so any in-flight notification
+        // handlers hit `guard let player = mediaPlayer else { return }` and exit early,
+        // preventing stale players from being stored in state after stop() returns.
+        let player = mediaPlayer
+        mediaPlayer = nil
+
+        if let player = player {
             NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "VLCMediaPlayerStateChanged"), object: player)
             NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "VLCMediaPlayerTimeChanged"), object: player)
+            player.stop()
         }
-        
-        mediaPlayer?.stop()
-        mediaPlayer = nil
     }
     
     deinit {
@@ -729,8 +734,9 @@ struct PlayerOverlayView: View {
                                 .tint(Color.appAccent)
                                 .scaleEffect(0.9)
                                 .onChange(of: volume) { _, newValue in
-                                    mediaPlayer?.audio?.volume = Int32(newValue * 100)
-                                    if newValue > 0 { isMuted = false; mediaPlayer?.audio?.isMuted = false }
+                                    let clamped = min(max(newValue, 0.0), 1.0)
+                                    mediaPlayer?.audio?.volume = Int32(clamped * 100)
+                                    if clamped > 0 { isMuted = false; mediaPlayer?.audio?.isMuted = false }
                                 }
                         }
 

@@ -266,7 +266,15 @@ struct EPGGridView: View {
     private func programBlock(for entry: EPGEntry, channel: Channel) -> some View {
         guard let startDouble = Double(entry.startTimestamp ?? ""),
               let stopDouble = Double(entry.stopTimestamp ?? "") else { return AnyView(EmptyView()) }
-        
+
+        // Reject timestamps outside ±1 year of now to prevent extreme layout values
+        // from malformed or malicious EPG data causing crashes or broken UI.
+        let now = Date().timeIntervalSince1970
+        let oneYear: Double = 31_536_000
+        guard startDouble > now - oneYear && startDouble < now + oneYear,
+              stopDouble  > now - oneYear && stopDouble  < now + oneYear,
+              stopDouble  > startDouble else { return AnyView(EmptyView()) }
+
         let programStart = Date(timeIntervalSince1970: startDouble)
         let programEnd = Date(timeIntervalSince1970: stopDouble)
         

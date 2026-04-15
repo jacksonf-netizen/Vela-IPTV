@@ -301,10 +301,16 @@ class PersistenceService: ObservableObject {
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
             kSecAttrAccount: account,
-            kSecValueData: dataFromString
+            kSecValueData: dataFromString,
+            kSecAttrAccessible: kSecAttrAccessibleWhenUnlockedThisDeviceOnly
         ]
 
-        SecItemAdd(query as CFDictionary, nil)
+        let status = SecItemAdd(query as CFDictionary, nil)
+        #if DEBUG
+        if status != errSecSuccess {
+            print("[Vela IPTV] WARNING: Keychain save failed for account '\(account)': OSStatus \(status)")
+        }
+        #endif
     }
 
     private func loadFromKeychain(account: String) -> String? {
@@ -313,6 +319,7 @@ class PersistenceService: ObservableObject {
             kSecClass: kSecClassGenericPassword,
             kSecAttrService: service,
             kSecAttrAccount: account,
+            kSecAttrAccessible: kSecAttrAccessibleWhenUnlockedThisDeviceOnly,
             kSecReturnData: true,
             kSecMatchLimit: kSecMatchLimitOne
         ]

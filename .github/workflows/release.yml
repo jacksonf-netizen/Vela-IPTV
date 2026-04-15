@@ -32,10 +32,16 @@ jobs:
           RAW_TAG=${GITHUB_REF#refs/tags/}
           VERSION=${RAW_TAG#v}
           echo "Detected GitHub Tag Version: $VERSION"
-          
-          # Inject the version into project.yml
-          sed -i '' "s/CFBundleShortVersionString: \".*\"/CFBundleShortVersionString: \"$VERSION\"/" project.yml
-          sed -i '' "s/CFBundleVersion: \".*\"/CFBundleVersion: \"$GITHUB_RUN_NUMBER\"/" project.yml
+
+          # Validate version format to prevent shell injection via malicious tag names
+          if ! echo "$VERSION" | grep -qE '^[0-9]+\.[0-9]+\.[0-9]+$'; then
+            echo "ERROR: Tag version '$VERSION' does not match expected format X.Y.Z"
+            exit 1
+          fi
+
+          # Inject the version into project.yml (VERSION is validated above)
+          sed -i '' "s/CFBundleShortVersionString: \".*\"/CFBundleShortVersionString: \"${VERSION}\"/" project.yml
+          sed -i '' "s/CFBundleVersion: \".*\"/CFBundleVersion: \"${GITHUB_RUN_NUMBER}\"/" project.yml
 
       - name: Generate Project
         run: |
