@@ -1,38 +1,37 @@
 import SwiftUI
 import AppKit
 
+extension Notification.Name {
+    /// Posted by AppDelegate when the app is about to terminate.
+    /// SwiftUI views that own sheets should observe this and set their
+    /// isPresented bindings to false so the app can exit cleanly.
+    static let velaWillTerminate = Notification.Name("velaWillTerminate")
+}
+
 class AppDelegate: NSObject, NSApplicationDelegate {
     private var terminationRequested = false
-    
+
     func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
-    
+
     func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
-        // If we already handled sheets on a previous pass, allow termination immediately
+        // Second pass: all sheets have had time to dismiss, allow termination.
         if terminationRequested {
             return .terminateNow
         }
-        
-        // Force-dismiss any open sheets (e.g. Settings) so Sparkle's quit event isn't blocked
-        var hadSheet = false
-        for window in sender.windows {
-            if let sheet = window.attachedSheet {
-                window.endSheet(sheet)
-                hadSheet = true
-            }
+        terminationRequested = true
+
+        // Tell SwiftUI views to dismiss their sheets through their own bindings.
+        // This is more reliable than AppKit's window.attachedSheet, which doesn't
+        // always reflect SwiftUI-managed sheets on macOS 13+.
+        NotificationCenter.default.post(name: .velaWillTerminate, object: nil)
+
+        // Give SwiftUI's dismiss animation a moment to complete, then re-trigger.
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            sender.terminate(nil)
         }
-        
-        if hadSheet {
-            terminationRequested = true
-            // Give the sheet animation a moment to finish, then re-send terminate
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                sender.terminate(nil)
-            }
-            return .terminateCancel  // Cancel THIS attempt; the re-sent one will succeed
-        }
-        
-        return .terminateNow
+        return .terminateCancel
     }
 }
 

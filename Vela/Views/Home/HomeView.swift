@@ -145,6 +145,9 @@ struct HomeView: View {
         .sheet(isPresented: $authVM.isShowingAddProvider) {
             AddProviderView(authVM: authVM, isSheet: true)
         }
+        .onReceive(NotificationCenter.default.publisher(for: .velaWillTerminate)) { _ in
+            authVM.isShowingAddProvider = false
+        }
     }
 }
 

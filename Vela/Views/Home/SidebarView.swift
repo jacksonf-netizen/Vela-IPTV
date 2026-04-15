@@ -174,6 +174,9 @@ struct SidebarView: View {
         .sheet(isPresented: $isShowingSettings) {
             SettingsView(authVM: authVM, channelVM: channelVM)
         }
+        .onReceive(NotificationCenter.default.publisher(for: .velaWillTerminate)) { _ in
+            isShowingSettings = false
+        }
     }
 }
 
