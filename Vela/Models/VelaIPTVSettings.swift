@@ -1,6 +1,12 @@
 import Foundation
 
 // MARK: - Settings Enums
+enum DefaultTab: String, Codable, CaseIterable, Identifiable {
+    var id: String { rawValue }
+    case liveTV = "Live TV"
+    case movies = "Movies & TV"
+}
+
 enum StartupScreen: String, Codable, CaseIterable, Identifiable {
     var id: String { rawValue }
     case recents = "Recently Watched"
@@ -53,7 +59,6 @@ struct VelaIPTVSettings: Codable, Equatable {
     // 2. Appearance
     var fontSize: FontSizeScale = .normal
     var showLogos: Bool = true
-    var accentHex: String = "FF2A55"
     var themeMode: ThemeMode = .dark
     
     // 3. Playlists (Accounts)
@@ -73,6 +78,10 @@ struct VelaIPTVSettings: Codable, Equatable {
     var upDownAction: KeyAction = .changeChannel
     var leftRightAction: KeyAction = .volume
     var enterAction: KeyAction = .toggleFullscreen
+
+    // 7. Content
+    var showVOD: Bool = true
+    var defaultTab: DefaultTab = .liveTV
     
     static let `default` = VelaIPTVSettings()
 }

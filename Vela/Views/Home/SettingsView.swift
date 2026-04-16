@@ -100,7 +100,7 @@ struct SettingsView: View {
                             .padding(.horizontal, 24)
                             .padding(.bottom, 20)
                     case .tvGuide:
-                        settingsScrollPane { SettingsTVGuideView() }
+                        settingsScrollPane { SettingsTVGuideView(channelVM: channelVM) }
                     case .playback:
                         settingsScrollPane { SettingsPlaybackView() }
                     }

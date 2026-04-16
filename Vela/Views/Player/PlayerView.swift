@@ -8,6 +8,8 @@ struct PlayerView: View {
     @ObservedObject var authVM: AuthViewModel
     let categories: [StreamCategory]
     @Binding var isPresented: Bool
+    let overrideStreamURL: URL?
+    let isVOD: Bool
 
     @State private var currentChannel: Channel
     @StateObject private var vm = PlayerViewModel()
@@ -17,12 +19,14 @@ struct PlayerView: View {
     @State private var currentEPG: EPGEntry? = nil
     @State private var controlsTimer: Timer? = nil
 
-    init(initialChannel: Channel, channels: [Channel], authVM: AuthViewModel, categories: [StreamCategory], isPresented: Binding<Bool>) {
+    init(initialChannel: Channel, channels: [Channel], authVM: AuthViewModel, categories: [StreamCategory], isPresented: Binding<Bool>, overrideStreamURL: URL? = nil, isVOD: Bool = false) {
         self.channels = channels
         self.authVM = authVM
         self.categories = categories
         self._isPresented = isPresented
         self._currentChannel = State(initialValue: initialChannel)
+        self.overrideStreamURL = overrideStreamURL
+        self.isVOD = isVOD
     }
 
     var body: some View {
@@ -97,8 +101,10 @@ struct PlayerView: View {
                             streamStats: vm.streamStats,
                             isFavorite: $isFavorite,
                             isPresented: $isPresented,
+                            isMediaPlaying: $vm.isMediaPlaying,
                             authVM: authVM,
                             categories: categories,
+                            isVOD: isVOD,
                             onFavoriteToggle: {
                                 persistence.toggleFavorite(currentChannel)
                                 isFavorite = persistence.isFavorite(currentChannel)
@@ -114,8 +120,10 @@ struct PlayerView: View {
                             streamStats: nil,
                             isFavorite: $isFavorite,
                             isPresented: $isPresented,
+                            isMediaPlaying: $vm.isMediaPlaying,
                             authVM: authVM,
                             categories: categories,
+                            isVOD: isVOD,
                             onFavoriteToggle: {
                                 persistence.toggleFavorite(currentChannel)
                                 isFavorite = persistence.isFavorite(currentChannel)
@@ -130,29 +138,39 @@ struct PlayerView: View {
         }
         .onAppear {
             isFavorite = persistence.isFavorite(currentChannel)
-            persistence.addRecent(currentChannel)
+            if !isVOD {
+                persistence.addRecent(currentChannel)
+            }
             let provider = persistence.providers.first { $0.id == currentChannel.providerId } ?? persistence.activeProvider
             guard let creds = provider?.credentials else {
                 vm.state = .error("No provider configured. Please add a provider in Settings.")
                 return
             }
-            vm.load(url: creds.streamURL(for: currentChannel), channel: currentChannel)
+            let streamURL = overrideStreamURL ?? creds.streamURL(for: currentChannel)
+            vm.load(url: streamURL, channel: currentChannel)
             startControlsTimer()
-            Task {
-                currentEPG = try? await XtreamCodesService.shared.getEPG(credentials: creds, streamId: currentChannel.streamId).first
+            if overrideStreamURL == nil {
+                Task {
+                    currentEPG = try? await XtreamCodesService.shared.getEPG(credentials: creds, streamId: currentChannel.streamId).first
+                }
             }
         }
         .onChange(of: currentChannel) { _, newChannel in
             vm.stop()
             isFavorite = persistence.isFavorite(newChannel)
-            persistence.addRecent(newChannel)
+            if !isVOD {
+                persistence.addRecent(newChannel)
+            }
             let provider = persistence.providers.first { $0.id == newChannel.providerId } ?? persistence.activeProvider
             guard let creds = provider?.credentials else {
                 vm.state = .error("No provider configured. Please add a provider in Settings.")
                 return
             }
-            vm.load(url: creds.streamURL(for: newChannel), channel: newChannel)
-            Task { currentEPG = try? await XtreamCodesService.shared.getEPG(credentials: creds, streamId: newChannel.streamId).first }
+            let streamURL = overrideStreamURL ?? creds.streamURL(for: newChannel)
+            vm.load(url: streamURL, channel: newChannel)
+            if overrideStreamURL == nil {
+                Task { currentEPG = try? await XtreamCodesService.shared.getEPG(credentials: creds, streamId: newChannel.streamId).first }
+            }
         }
         .onDisappear { vm.stop() }
         .onHover { if $0 { startControlsTimer() } }
@@ -207,6 +225,7 @@ enum PlayerState: Equatable {
 class PlayerViewModel: NSObject, ObservableObject, @preconcurrency VLCMediaPlayerDelegate {
     @Published var state: PlayerState = .loading
     @Published var isBuffering: Bool = false
+    @Published var isMediaPlaying: Bool = false
     @Published var streamStats: String? = nil
     
     // PHASE 39/40: Track current channel for architectural reloads & VLC recovery
@@ -284,17 +303,23 @@ class PlayerViewModel: NSObject, ObservableObject, @preconcurrency VLCMediaPlaye
         self.retryCount = 0  // Reset retry count on new load
         
         // PHASE 40: VLC Performance Options (The Buffer-Buster)
-        let options: [String] = [
+        // For VOD (movie/series), omit live-stream flags so pause/seek work correctly.
+        let isVODStream = (channel.streamType == "movie" || channel.streamType == "series")
+        var options: [String] = [
             "--network-caching=3000",
-            "--live-caching=1500",
             "--clock-jitter=0",
             "--clock-synchro=0",
-            "--http-reconnect",
-            "--http-continuous",
             "--skip-frames",
             "--videotoolbox",
             "--no-osd"
         ]
+        if !isVODStream {
+            options += [
+                "--live-caching=1500",
+                "--http-reconnect",
+                "--http-continuous"
+            ]
+        }
         
         let media = VLCMedia(url: url)
         // VLCKit expects options as a dictionary with empty string values
@@ -388,6 +413,7 @@ class PlayerViewModel: NSObject, ObservableObject, @preconcurrency VLCMediaPlaye
             case .playing:
                 self.state = .playing(player)
                 self.hasStartedPlaying = true
+                self.isMediaPlaying = true
                 // Immediately hide buffering and cancel any pending buffering tasks
                 self.isBuffering = false
                 self.bufferingTask?.cancel()
@@ -396,7 +422,7 @@ class PlayerViewModel: NSObject, ObservableObject, @preconcurrency VLCMediaPlaye
                 #if DEBUG
                 print("[Phase 44] ✅ Playing - Buffering cleared")
                 #endif
-                
+
             case .buffering:
                 // Only show buffering if we've been playing for at least 2 seconds
                 // This prevents the initial buffering flash
@@ -433,6 +459,7 @@ class PlayerViewModel: NSObject, ObservableObject, @preconcurrency VLCMediaPlaye
                 
             case .paused, .stopped, .ended, .error:
                 self.isBuffering = false
+                self.isMediaPlaying = false
                 self.bufferingTask?.cancel()
                 self.bufferingTask = nil
                 
@@ -566,8 +593,10 @@ struct PlayerOverlayView: View {
     let streamStats: String?
     @Binding var isFavorite: Bool
     @Binding var isPresented: Bool
+    @Binding var isMediaPlaying: Bool
     @ObservedObject var authVM: AuthViewModel
     let categories: [StreamCategory]
+    let isVOD: Bool
     let onFavoriteToggle: () -> Void
     let onNext: () -> Void
     let onPrev: () -> Void
@@ -578,8 +607,10 @@ struct PlayerOverlayView: View {
     @State private var isShowingSettings = false
     @State private var volume: Double = 1.0
     @State private var isMuted = false
-    @State private var isPlaying = true
     @State private var isPulseActive = false
+    @State private var seekPosition: Double = 0.0
+    @State private var isSeeking = false
+    @State private var timeUpdateTimer: Timer? = nil
 
     var body: some View {
         ZStack {
@@ -630,8 +661,18 @@ struct PlayerOverlayView: View {
                                 .foregroundColor(.white)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.7)
-                            
-                            if let epg = epgEntry {
+
+                            if isVOD {
+                                HStack(spacing: 5) {
+                                    Image(systemName: "film.fill")
+                                        .font(.system(size: 9))
+                                        .foregroundColor(Color.appAccent)
+                                    Text("MOVIE")
+                                        .font(.system(size: 10, weight: .black))
+                                        .foregroundColor(Color.appAccent)
+                                        .tracking(1.0)
+                                }
+                            } else if let epg = epgEntry {
                                 Text(epg.title)
                                     .font(.system(size: 12, weight: .medium))
                                     .foregroundColor(Color.appTextSecondary)
@@ -651,7 +692,7 @@ struct PlayerOverlayView: View {
                             }
                         }
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading) // Prevents text from pushing buttons out
+                    .frame(maxWidth: .infinity, alignment: .leading)
 
                     Spacer(minLength: 16)
 
@@ -711,93 +752,12 @@ struct PlayerOverlayView: View {
 
                 Spacer()
 
-                // MARK: – Bottom Control HUD (Native Style Pod)
-                HStack(spacing: 0) {
-                    Spacer()
-                    
-                    HStack(spacing: 24) {
-                        // Volume Section
-                        HStack(spacing: 8) {
-                            Button {
-                                isMuted.toggle()
-                                mediaPlayer?.audio?.isMuted = isMuted
-                            } label: {
-                                Image(systemName: isMuted || volume == 0 ? "speaker.slash.fill" : (volume < 0.5 ? "speaker.wave.1.fill" : "speaker.wave.3.fill"))
-                                    .font(.system(size: 12))
-                                    .foregroundColor(.white.opacity(0.7))
-                                    .frame(width: 18)
-                            }
-                            .buttonStyle(.plain)
-
-                            Slider(value: $volume, in: 0...1)
-                                .frame(minWidth: 40, maxWidth: 100)
-                                .tint(Color.appAccent)
-                                .scaleEffect(0.9)
-                                .onChange(of: volume) { _, newValue in
-                                    let clamped = min(max(newValue, 0.0), 1.0)
-                                    mediaPlayer?.audio?.volume = Int32(clamped * 100)
-                                    if clamped > 0 { isMuted = false; mediaPlayer?.audio?.isMuted = false }
-                                }
-                        }
-
-                        // Central Transport
-                        HStack(spacing: 20) {
-                            Button(action: onPrev) {
-                                Image(systemName: "backward.fill")
-                                    .font(.system(size: 14))
-                                    .foregroundColor(.white.opacity(0.9))
-                            }
-                            .buttonStyle(.plain)
-
-                            Button {
-                                if isPlaying { mediaPlayer?.pause() } else { mediaPlayer?.play() }
-                                isPlaying.toggle()
-                            } label: {
-                                Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                                    .font(.system(size: 36))
-                                    .foregroundColor(.white)
-                                    .shadow(color: Color.appAccent.opacity(0.3), radius: 6)
-                            }
-                            .buttonStyle(.plain)
-
-                            Button(action: onNext) {
-                                Image(systemName: "forward.fill")
-                                    .font(.system(size: 14))
-                                    .foregroundColor(.white.opacity(0.9))
-                            }
-                            .buttonStyle(.plain)
-                        }
-
-                        // Fullscreen
-                        Button {
-                            if let window = NSApplication.shared.windows.first(where: { $0.isKeyWindow }) {
-                                window.toggleFullScreen(nil)
-                            }
-                        } label: {
-                            Image(systemName: "arrow.up.left.and.arrow.down.right")
-                                .font(.system(size: 12, weight: .bold))
-                                .foregroundColor(.white.opacity(0.8))
-                                .frame(width: 30, height: 30)
-                                .background(Color.white.opacity(0.08))
-                                .clipShape(Circle())
-                        }
-                        .buttonStyle(.plain)
-                    }
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
-                    .background(
-                        VisualEffectView(material: .hudWindow, blendingMode: .withinWindow)
-                            .clipShape(Capsule())
-                            .overlay(Capsule().stroke(Color.white.opacity(0.1), lineWidth: 0.5))
-                            .shadow(color: .black.opacity(0.4), radius: 25, x: 0, y: 12)
-                    )
-                    .frame(maxWidth: 580)
-                    .frame(minWidth: 320)
-                    
-                    Spacer()
+                // MARK: – Bottom Control HUD
+                if isVOD {
+                    vodControlHUD
+                } else {
+                    liveControlHUD
                 }
-                .padding(.horizontal, 40)
-                .padding(.bottom, 32)
             }
         }
         .onAppear {
@@ -805,7 +765,271 @@ struct PlayerOverlayView: View {
                 volume = Double(player.audio?.volume ?? 0) / 100.0
                 isMuted = player.audio?.isMuted ?? false
             }
+            if isVOD {
+                startTimeUpdateTimer()
+            }
         }
+        .onDisappear {
+            timeUpdateTimer?.invalidate()
+            timeUpdateTimer = nil
+        }
+    }
+
+    // MARK: – Live TV Controls
+
+    private var liveControlHUD: some View {
+        HStack(spacing: 0) {
+            Spacer()
+
+            HStack(spacing: 24) {
+                volumeControls
+
+                HStack(spacing: 20) {
+                    Button(action: onPrev) {
+                        Image(systemName: "backward.fill")
+                            .font(.system(size: 14))
+                            .foregroundColor(.white.opacity(0.9))
+                    }
+                    .buttonStyle(.plain)
+
+                    playPauseButton
+
+                    Button(action: onNext) {
+                        Image(systemName: "forward.fill")
+                            .font(.system(size: 14))
+                            .foregroundColor(.white.opacity(0.9))
+                    }
+                    .buttonStyle(.plain)
+                }
+
+                fullscreenButton
+            }
+            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
+            .background(
+                VisualEffectView(material: .hudWindow, blendingMode: .withinWindow)
+                    .clipShape(Capsule())
+                    .overlay(Capsule().stroke(Color.white.opacity(0.1), lineWidth: 0.5))
+                    .shadow(color: .black.opacity(0.4), radius: 25, x: 0, y: 12)
+            )
+            .frame(maxWidth: 580)
+            .frame(minWidth: 320)
+
+            Spacer()
+        }
+        .padding(.horizontal, 40)
+        .padding(.bottom, 32)
+    }
+
+    // MARK: – VOD Controls (with timeline)
+
+    private var vodControlHUD: some View {
+        VStack(spacing: 0) {
+            Spacer()
+
+            VStack(spacing: 8) {
+                // Timeline scrubber
+                VStack(spacing: 4) {
+                    VODTimelineSlider(
+                        position: $seekPosition,
+                        isSeeking: $isSeeking,
+                        onSeek: { newPos in
+                            mediaPlayer?.position = Float(newPos)
+                        }
+                    )
+
+                    HStack {
+                        Text(formatVLCTime(mediaPlayer?.time.intValue))
+                            .font(.system(size: 11, weight: .bold, design: .monospaced))
+                            .foregroundColor(.white.opacity(0.7))
+
+                        Spacer()
+
+                        Text(formatVLCTime(mediaPlayer?.media?.length.intValue))
+                            .font(.system(size: 11, weight: .bold, design: .monospaced))
+                            .foregroundColor(.white.opacity(0.5))
+                    }
+                }
+
+                // Transport controls
+                HStack(spacing: 20) {
+                    volumeControls
+
+                    Spacer()
+
+                    HStack(spacing: 24) {
+                        Button {
+                            let current = mediaPlayer?.position ?? 0
+                            mediaPlayer?.position = max(0, current - 0.02)
+                        } label: {
+                            Image(systemName: "gobackward.10")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(.white.opacity(0.9))
+                        }
+                        .buttonStyle(.plain)
+
+                        playPauseButton
+
+                        Button {
+                            let current = mediaPlayer?.position ?? 0
+                            mediaPlayer?.position = min(1.0, current + 0.02)
+                        } label: {
+                            Image(systemName: "goforward.10")
+                                .font(.system(size: 16, weight: .bold))
+                                .foregroundColor(.white.opacity(0.9))
+                        }
+                        .buttonStyle(.plain)
+                    }
+
+                    Spacer()
+
+                    fullscreenButton
+                }
+            }
+            .padding(.horizontal, 24)
+            .padding(.vertical, 14)
+            .background(
+                VisualEffectView(material: .hudWindow, blendingMode: .withinWindow)
+                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
+                    .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(Color.white.opacity(0.1), lineWidth: 0.5))
+                    .shadow(color: .black.opacity(0.4), radius: 25, x: 0, y: 12)
+            )
+            .padding(.horizontal, 40)
+            .padding(.bottom, 32)
+        }
+    }
+
+    // MARK: – Shared Control Components
+
+    private var volumeControls: some View {
+        HStack(spacing: 8) {
+            Button {
+                isMuted.toggle()
+                mediaPlayer?.audio?.isMuted = isMuted
+            } label: {
+                Image(systemName: isMuted || volume == 0 ? "speaker.slash.fill" : (volume < 0.5 ? "speaker.wave.1.fill" : "speaker.wave.3.fill"))
+                    .font(.system(size: 12))
+                    .foregroundColor(.white.opacity(0.7))
+                    .frame(width: 18)
+            }
+            .buttonStyle(.plain)
+
+            Slider(value: $volume, in: 0...1)
+                .frame(minWidth: 40, maxWidth: 100)
+                .tint(Color.appAccent)
+                .scaleEffect(0.9)
+                .onChange(of: volume) { _, newValue in
+                    let clamped = min(max(newValue, 0.0), 1.0)
+                    mediaPlayer?.audio?.volume = Int32(clamped * 100)
+                    if clamped > 0 { isMuted = false; mediaPlayer?.audio?.isMuted = false }
+                }
+        }
+    }
+
+    private var playPauseButton: some View {
+        Button {
+            if isMediaPlaying { mediaPlayer?.pause() } else { mediaPlayer?.play() }
+        } label: {
+            Image(systemName: isMediaPlaying ? "pause.circle.fill" : "play.circle.fill")
+                .font(.system(size: 36))
+                .foregroundColor(.white)
+                .shadow(color: Color.appAccent.opacity(0.3), radius: 6)
+        }
+        .buttonStyle(.plain)
+    }
+
+    private var fullscreenButton: some View {
+        Button {
+            if let window = NSApplication.shared.windows.first(where: { $0.isKeyWindow }) {
+                window.toggleFullScreen(nil)
+            }
+        } label: {
+            Image(systemName: "arrow.up.left.and.arrow.down.right")
+                .font(.system(size: 12, weight: .bold))
+                .foregroundColor(.white.opacity(0.8))
+                .frame(width: 30, height: 30)
+                .background(Color.white.opacity(0.08))
+                .clipShape(Circle())
+        }
+        .buttonStyle(.plain)
+    }
+
+    // MARK: – Helpers
+
+    private func startTimeUpdateTimer() {
+        timeUpdateTimer?.invalidate()
+        timeUpdateTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { _ in
+            guard !isSeeking, let player = mediaPlayer else { return }
+            seekPosition = Double(player.position)
+        }
+    }
+
+    private func formatVLCTime(_ milliseconds: Int32?) -> String {
+        guard let ms = milliseconds, ms > 0 else { return "--:--" }
+        let totalSeconds = Int(ms) / 1000
+        let hours = totalSeconds / 3600
+        let minutes = (totalSeconds % 3600) / 60
+        let seconds = totalSeconds % 60
+        if hours > 0 {
+            return String(format: "%d:%02d:%02d", hours, minutes, seconds)
+        }
+        return String(format: "%d:%02d", minutes, seconds)
+    }
+}
+
+// MARK: – VOD Timeline Slider
+
+struct VODTimelineSlider: View {
+    @Binding var position: Double
+    @Binding var isSeeking: Bool
+    let onSeek: (Double) -> Void
+    @State private var isHovering = false
+
+    var body: some View {
+        GeometryReader { geo in
+            let width = geo.size.width
+            let thumbX = CGFloat(position) * width
+
+            ZStack(alignment: .leading) {
+                // Track background
+                RoundedRectangle(cornerRadius: 3)
+                    .fill(Color.white.opacity(0.15))
+                    .frame(height: isHovering || isSeeking ? 8 : 4)
+
+                // Progress fill
+                RoundedRectangle(cornerRadius: 3)
+                    .fill(Color.appAccent)
+                    .frame(width: max(0, thumbX), height: isHovering || isSeeking ? 8 : 4)
+
+                // Thumb
+                if isHovering || isSeeking {
+                    Circle()
+                        .fill(Color.white)
+                        .frame(width: 14, height: 14)
+                        .shadow(color: .black.opacity(0.3), radius: 4)
+                        .offset(x: thumbX - 7)
+                }
+            }
+            .frame(height: 14)
+            .contentShape(Rectangle())
+            .gesture(
+                DragGesture(minimumDistance: 0)
+                    .onChanged { value in
+                        isSeeking = true
+                        let pos = min(max(value.location.x / width, 0), 1)
+                        position = pos
+                    }
+                    .onEnded { value in
+                        let pos = min(max(value.location.x / width, 0), 1)
+                        position = pos
+                        onSeek(pos)
+                        isSeeking = false
+                    }
+            )
+            .onHover { isHovering = $0 }
+            .animation(.easeOut(duration: 0.15), value: isHovering)
+        }
+        .frame(height: 14)
     }
 }
 

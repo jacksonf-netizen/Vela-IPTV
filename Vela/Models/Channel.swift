@@ -33,7 +33,22 @@ struct Channel: Identifiable, Codable, Hashable, Equatable {
         case providerId
     }
 
-    // Failable init for cases where raw JSON might have int/string mismatches
+    init(num: Int? = nil, name: String, streamType: String? = nil, streamId: Int, streamIcon: String? = nil, epgChannelId: String? = nil, added: String? = nil, categoryId: String? = nil, customSid: String? = nil, tvArchive: Int? = nil, directSource: String? = nil, tvArchiveDuration: Int? = nil, providerId: UUID? = nil) {
+        self.num = num
+        self.name = name
+        self.streamType = streamType
+        self.streamId = streamId
+        self.streamIcon = streamIcon
+        self.epgChannelId = epgChannelId
+        self.added = added
+        self.categoryId = categoryId
+        self.customSid = customSid
+        self.tvArchive = tvArchive
+        self.directSource = directSource
+        self.tvArchiveDuration = tvArchiveDuration
+        self.providerId = providerId
+    }
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         num = try? container.decode(Int.self, forKey: .num)

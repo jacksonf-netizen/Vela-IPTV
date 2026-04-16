@@ -1,8 +1,12 @@
 import SwiftUI
 
 struct SettingsTVGuideView: View {
+    @ObservedObject var channelVM: ChannelViewModel
     @ObservedObject private var persistence = PersistenceService.shared
+    @ObservedObject private var epgVM = EPGViewModel.shared
     @State private var showRefreshConfirmation = false
+    @State private var showPlaylistRefreshConfirmation = false
+    @State private var isFetchingPlaylist = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 24) {
@@ -23,20 +27,75 @@ struct SettingsTVGuideView: View {
                     SettingsRow(title: "Force Update EPG", subtitle: "Clear all cached schedule data and start fresh.") {
                         Button {
                             NotificationCenter.default.post(name: .velaForceEPGRefresh, object: nil)
-                            showRefreshConfirmation = true
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                                showRefreshConfirmation = false
-                            }
                         } label: {
-                            HStack(spacing: 6) {
-                                Image(systemName: showRefreshConfirmation ? "checkmark.circle.fill" : "arrow.clockwise")
-                                Text(showRefreshConfirmation ? "Cleared!" : "Clear & Update")
+                            HStack(spacing: 8) {
+                                if epgVM.isFetching {
+                                    VelaIPTVSpinner(size: 14, lineWidth: 2)
+                                    Text("Updating Guide...")
+                                } else {
+                                    Image(systemName: showRefreshConfirmation ? "checkmark.circle.fill" : "arrow.clockwise")
+                                    Text(showRefreshConfirmation ? "Cleared!" : "Clear & Update")
+                                }
                             }
+                            .frame(minWidth: 120)
                         }
                         .buttonStyle(.bordered)
                         .controlSize(.small)
-                        .tint(showRefreshConfirmation ? .green : Color.appAccent)
-                        .animation(.easeInOut, value: showRefreshConfirmation)
+                        .tint(showRefreshConfirmation ? .green : (epgVM.isFetching ? .gray : Color.appAccent))
+                        .disabled(epgVM.isFetching)
+                        .animation(.easeInOut, value: showRefreshConfirmation || epgVM.isFetching)
+                        .onChange(of: epgVM.isFetching) { oldVal, newVal in
+                            if oldVal == true && newVal == false {
+                                // Just finished fetching
+                                withAnimation { showRefreshConfirmation = true }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    withAnimation { showRefreshConfirmation = false }
+                                }
+                            }
+                        }
+                    }
+                    
+                    Divider().background(Color.white.opacity(0.06))
+                    
+                    SettingsRow(title: "Force Update Playlist", subtitle: "Refresh categories and channels from your provider.") {
+                        Button {
+                            Task {
+                                isFetchingPlaylist = true
+                                if let pid = persistence.activeProviderId {
+                                    // Refresh categories and Live stream lists
+                                    await channelVM.loadCategories(for: pid)
+                                    if let selected = channelVM.selectedCategory {
+                                        await channelVM.selectCategory(selected, providerId: pid)
+                                    }
+                                }
+                                isFetchingPlaylist = false
+                            }
+                        } label: {
+                            HStack(spacing: 8) {
+                                if isFetchingPlaylist {
+                                    VelaIPTVSpinner(size: 14, lineWidth: 2)
+                                    Text("Updating Playlist...")
+                                } else {
+                                    Image(systemName: showPlaylistRefreshConfirmation ? "checkmark.circle.fill" : "arrow.clockwise")
+                                    Text(showPlaylistRefreshConfirmation ? "Updated!" : "Update Playlist")
+                                }
+                            }
+                            .frame(minWidth: 120)
+                        }
+                        .buttonStyle(.bordered)
+                        .controlSize(.small)
+                        .tint(showPlaylistRefreshConfirmation ? .green : (isFetchingPlaylist ? .gray : Color.appAccent))
+                        .disabled(isFetchingPlaylist)
+                        .animation(.easeInOut, value: showPlaylistRefreshConfirmation || isFetchingPlaylist)
+                        .onChange(of: isFetchingPlaylist) { oldVal, newVal in
+                            if oldVal == true && newVal == false {
+                                // Just finished fetching
+                                withAnimation { showPlaylistRefreshConfirmation = true }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                                    withAnimation { showPlaylistRefreshConfirmation = false }
+                                }
+                            }
+                        }
                     }
                 }
             }

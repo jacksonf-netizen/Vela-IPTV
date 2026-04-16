@@ -21,7 +21,7 @@ struct EPGGridView: View {
     let sectionTitle: String
     let onSelect: (Channel) -> Void
     
-    @StateObject private var epgVM = EPGViewModel()
+    @ObservedObject private var epgVM = EPGViewModel.shared
     @ObservedObject private var persistence = PersistenceService.shared
     
     // Layout reads from user settings
@@ -65,10 +65,6 @@ struct EPGGridView: View {
         }
         .onReceive(timer) { time in
             currentTimeLine = time
-        }
-        .onReceive(NotificationCenter.default.publisher(for: .velaForceEPGRefresh)) { _ in
-            guard let creds = persistence.activeProvider?.credentials else { return }
-            epgVM.clearAndRefresh(for: Array(channels.prefix(200)), credentials: creds)
         }
         .onDisappear {
             epgVM.cancel()

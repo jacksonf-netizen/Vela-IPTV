@@ -30,6 +30,20 @@ struct XtreamCredentials: Codable, Equatable {
         components?.path = "/live/\(username)/\(password)/\(channel.streamId).\(format.extensionName)"
         return components?.url
     }
+
+    func vodStreamURL(for item: VODItem) -> URL? {
+        let ext = item.containerExtension ?? "mp4"
+        var components = URLComponents(string: baseURL)
+        components?.path = "/movie/\(username)/\(password)/\(item.streamId).\(ext)"
+        return components?.url
+    }
+
+    func seriesEpisodeURL(episodeId: Int, containerExtension: String) -> URL? {
+        let ext = containerExtension.isEmpty ? "mkv" : containerExtension
+        var components = URLComponents(string: baseURL)
+        components?.path = "/series/\(username)/\(password)/\(episodeId).\(ext)"
+        return components?.url
+    }
 }
 
 // MARK: - Provider (multi-provider support)

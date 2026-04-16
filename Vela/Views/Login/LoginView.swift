@@ -22,13 +22,14 @@ struct AddProviderView: View {
                     ZStack {
                         RoundedRectangle(cornerRadius: 18, style: .continuous)
                             .fill(Color.velaIPTVGradient)
-                            .frame(width: isSheet ? 56 : 80, height: isSheet ? 56 : 80)
+                            .frame(width: isSheet ? 64 : 80, height: isSheet ? 64 : 80)
                             .shadow(color: Color.appAccent.opacity(0.4), radius: 20, x: 0, y: 10)
                         
                         Image(systemName: "v.square.fill")
-                            .font(.system(size: isSheet ? 32 : 44, weight: .bold))
+                            .font(.system(size: isSheet ? 36 : 44, weight: .bold))
                             .foregroundColor(.white)
                     }
+                    .padding(.top, isSheet ? 24 : 0) // Prevent shadow clipping at top of sheets
 
                     VStack(spacing: 4) {
                         Text(isSheet ? "New Provider" : "Vela IPTV")
@@ -112,6 +113,7 @@ struct AddProviderView: View {
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
                             .background(Color.white.opacity(0.06))
+                            .contentShape(Rectangle())
                             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
                             .overlay(RoundedRectangle(cornerRadius: 14, style: .continuous).stroke(Color.white.opacity(0.08), lineWidth: 1))
 
@@ -167,6 +169,7 @@ struct AddProviderView: View {
             .frame(maxWidth: .infinity)
             .frame(height: 50)
             .background(isFormValid ? AnyShapeStyle(Color.velaIPTVGradient) : AnyShapeStyle(Color.white.opacity(0.1)))
+            .contentShape(Rectangle())
             .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
             .scaleEffect(isHoveringButton && isFormValid ? 1.02 : 1.0)
             .shadow(color: isFormValid ? Color.appAccent.opacity(isHoveringButton ? 0.5 : 0.3) : .clear,

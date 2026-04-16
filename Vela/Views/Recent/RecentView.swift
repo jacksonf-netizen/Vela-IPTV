@@ -14,7 +14,7 @@ struct RecentView: View {
             HStack(alignment: .lastTextBaseline) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Recents")
-                        .font(.system(size: 22, weight: .bold, design: .rounded))
+                        .font(.system(size: 18, weight: .bold, design: .rounded))
                         .foregroundColor(.white)
                         .lineLimit(1)
                         .minimumScaleFactor(0.8)
@@ -46,8 +46,8 @@ struct RecentView: View {
                 }
             }
             .padding(.horizontal, 32)
-            .padding(.top, 20)
-            .padding(.bottom, 16)
+            .padding(.top, 2)
+            .padding(.bottom, 4)
 
             if persistence.recents.isEmpty {
                 Spacer()
@@ -73,6 +73,7 @@ struct RecentView: View {
                     .padding(.horizontal, 32)
                     .padding(.bottom, 32)
                 }
+                .scrollClipDisabled()
             }
         }
         .background(Color.clear)

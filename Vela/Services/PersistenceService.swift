@@ -17,13 +17,18 @@ class PersistenceService: ObservableObject {
     private let startupDelayKey    = "velaiptv.startupBufferDelay"
     private let streamFormatKey    = "velaiptv.preferredStreamFormat"
     private let secretsPrefix      = "velaiptv.provider.secure."
+    private let vodRecentsKey      = "velaiptv.vodRecents"
+    private let vodFavoritesKey    = "velaiptv.vodFavorites"
     private let maxRecents         = 20
+    private let maxVODRecents      = 20
     private let maxProviders       = 5
     
     // Coalesced save work items — prevent rapid UserDefaults writes from blocking main thread
     private var favoriteSaveWork: DispatchWorkItem?
     private var recentsSaveWork: DispatchWorkItem?
     private var hiddenCatsSaveWork: DispatchWorkItem?
+    private var vodRecentsSaveWork: DispatchWorkItem?
+    private var vodFavoritesSaveWork: DispatchWorkItem?
     private let saveQueue = DispatchQueue(label: "com.velaiptv.persistence.save", qos: .utility)
     
 
@@ -32,11 +37,14 @@ class PersistenceService: ObservableObject {
     @Published var activeProviderId: UUID? = nil
     @Published var favorites: [Channel] = []
     @Published var recents: [RecentEntry] = []
+    @Published var vodRecents: [VODRecentEntry] = []
+    @Published var vodFavorites: [VODItem] = []
     @Published var hiddenCategoryIds: Set<String> = [] // The active set
     
     // Precomputed lookup sets for O(1) checks instead of O(n) array iteration
     private(set) var favoriteIds: Set<String> = []
     private(set) var favoriteStreamIds: Set<Int> = [] // For legacy orphan matching
+    private(set) var vodFavoriteIds: Set<String> = []
     @Published var allHiddenCategories: [String: Set<String>] = [:] // ProviderID -> CategoryIDs (Set for O(1) lookup)
     @Published var playbackBufferDuration: Double = 15.0 // Default 15s matching user preference
     @Published var bufferProfile: BufferProfile = .medium
@@ -64,6 +72,8 @@ class PersistenceService: ObservableObject {
         loadProviders()
         loadFavorites()
         loadRecents()
+        loadVODRecents()
+        loadVODFavorites()
         loadHiddenCategories()
         loadAutoHideNewCategories()
         loadKnownCategories()
@@ -626,6 +636,80 @@ class PersistenceService: ObservableObject {
     func clearRecents() {
         recents = []
         saveRecentsCoalesced()
+    }
+
+    // MARK: – VOD Recents
+
+    func addVODRecent(_ item: VODItem) {
+        vodRecents.removeAll { $0.item.id == item.id }
+        vodRecents.insert(VODRecentEntry(item: item, watchedAt: Date()), at: 0)
+        if vodRecents.count > maxVODRecents { vodRecents = Array(vodRecents.prefix(maxVODRecents)) }
+        saveVODRecentsCoalesced()
+    }
+
+    func removeVODRecent(_ entry: VODRecentEntry) {
+        vodRecents.removeAll { $0.id == entry.id }
+        saveVODRecentsCoalesced()
+    }
+
+    func clearVODRecents() {
+        vodRecents = []
+        saveVODRecentsCoalesced()
+    }
+
+    private func saveVODRecentsCoalesced() {
+        vodRecentsSaveWork?.cancel()
+        let work = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
+            if let data = try? JSONEncoder().encode(self.vodRecents) {
+                UserDefaults.standard.set(data, forKey: self.vodRecentsKey)
+            }
+        }
+        vodRecentsSaveWork = work
+        saveQueue.asyncAfter(deadline: .now() + 0.3, execute: work)
+    }
+
+    private func loadVODRecents() {
+        guard let data = UserDefaults.standard.data(forKey: vodRecentsKey),
+              let decoded = try? JSONDecoder().decode([VODRecentEntry].self, from: data)
+        else { return }
+        vodRecents = decoded
+    }
+
+    // MARK: – VOD Favorites
+
+    func isVODFavorite(_ item: VODItem) -> Bool {
+        vodFavoriteIds.contains(item.id)
+    }
+
+    func toggleVODFavorite(_ item: VODItem) {
+        if let index = vodFavorites.firstIndex(where: { $0.id == item.id }) {
+            vodFavorites.remove(at: index)
+        } else {
+            vodFavorites.append(item)
+        }
+        vodFavoriteIds = Set(vodFavorites.map { $0.id })
+        saveVODFavoritesCoalesced()
+    }
+
+    private func saveVODFavoritesCoalesced() {
+        vodFavoritesSaveWork?.cancel()
+        let work = DispatchWorkItem { [weak self] in
+            guard let self = self else { return }
+            if let data = try? JSONEncoder().encode(self.vodFavorites) {
+                UserDefaults.standard.set(data, forKey: self.vodFavoritesKey)
+            }
+        }
+        vodFavoritesSaveWork = work
+        saveQueue.asyncAfter(deadline: .now() + 0.3, execute: work)
+    }
+
+    private func loadVODFavorites() {
+        guard let data = UserDefaults.standard.data(forKey: vodFavoritesKey),
+              let decoded = try? JSONDecoder().decode([VODItem].self, from: data)
+        else { return }
+        vodFavorites = decoded
+        vodFavoriteIds = Set(decoded.map { $0.id })
     }
 
     /// Coalesced save — batches rapid updates into a single write after 300ms of quiet

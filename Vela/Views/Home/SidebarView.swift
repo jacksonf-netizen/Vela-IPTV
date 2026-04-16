@@ -45,7 +45,7 @@ struct SidebarView: View {
                     // MARK: – Accounts
                     ForEach(persistence.providers) { provider in
                         let isExpanded = expandedProviderIds.contains(provider.id)
-                        
+
                         Divider()
                             .padding(.vertical, 8)
                             .padding(.horizontal, 16)
@@ -74,7 +74,7 @@ struct SidebarView: View {
                         if isExpanded {
                             let providerCats = channelVM.categoriesByProvider[provider.id] ?? []
                             let visibleCategories = providerCats.filter { !persistence.isCategoryHidden($0.categoryId, providerId: provider.id) }
-                            
+
                             ForEach(visibleCategories) { cat in
                                 CategoryRow(
                                     category: cat,
@@ -83,7 +83,7 @@ struct SidebarView: View {
                                     onSelect: { selectedSection = .category(cat, providerId: provider.id) }
                                 )
                             }
-                            
+
                             if providerCats.isEmpty && isLoading {
                                 HStack(spacing: 12) {
                                     VelaIPTVSpinner(size: 14, lineWidth: 2)
@@ -111,13 +111,13 @@ struct SidebarView: View {
                 .padding(.bottom, 10)
             }
             .frame(minHeight: 0, idealHeight: 100, maxHeight: .infinity)
-            
+
             // MARK: – Sticky Footer
             VStack(spacing: 0) {
                 Divider()
                     .opacity(0.15)
                     .padding(.horizontal, 16)
-                
+
                 let canAddProvider = persistence.providers.count < 5
                 HStack(spacing: 8) {
                     Button { authVM.isShowingAddProvider = true } label: {
@@ -127,11 +127,11 @@ struct SidebarView: View {
                                 .font(.system(size: 14, weight: .semibold))
                                 .foregroundColor(canAddProvider ? Color.appAccent : Color.appTextSecondary.opacity(0.4))
                                 .frame(width: 20)
-                            
+
                             Text(canAddProvider ? "Add Account" : "Account Limit Reached (Max 5)")
                                 .font(.system(size: 13, weight: .medium))
                                 .foregroundColor(canAddProvider ? Color.appTextPrimary : Color.appTextSecondary.opacity(0.4))
-                            
+
                             Spacer()
                         }
                         .padding(.horizontal, 14)
@@ -148,7 +148,7 @@ struct SidebarView: View {
                     .onHover { isHoveringAdd = $0 }
                     .disabled(!canAddProvider)
                     .opacity(canAddProvider ? 1.0 : 0.6)
-                    
+
                     Button { isShowingSettings = true } label: {
                         Image(systemName: "gearshape.fill")
                             .symbolRenderingMode(.hierarchical)
@@ -196,14 +196,14 @@ struct CategoryRow: View {
                     .font(.system(size: 13, weight: .medium))
                     .foregroundColor(isSelected ? .white : Color.appTextSecondary)
                     .frame(width: 20)
-                
+
                 Text(category.categoryName)
                     .font(.system(size: 13, weight: isSelected ? .semibold : .medium))
                     .foregroundColor(isSelected ? .white : Color.appTextSecondary)
                     .lineLimit(1)
-                
+
                 Spacer()
-                
+
                 if isSelected {
                     Image(systemName: "chevron.right")
                         .font(.system(size: 10, weight: .bold))
@@ -212,6 +212,7 @@ struct CategoryRow: View {
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 8)
+            .contentShape(Rectangle())
             .background(
                 RoundedRectangle(cornerRadius: 10, style: .continuous)
                     .fill(isSelected ? Color.appAccent : (isHovering ? Color.white.opacity(0.08) : Color.clear))
@@ -232,28 +233,27 @@ struct ProviderHeader: View {
     let isExpanded: Bool
     let onToggle: () -> Void
     @State private var isHovering = false
-    
+
     var body: some View {
         Button(action: onToggle) {
             HStack(spacing: 8) {
-                // Provider Indicator
                 ZStack {
                     RoundedRectangle(cornerRadius: 6, style: .continuous)
                         .fill(isExpanded ? Color.appAccent.opacity(0.15) : Color.white.opacity(0.06))
                         .frame(width: 24, height: 24)
-                    
+
                     Image(systemName: isExpanded ? "tray.full.fill" : "tray.fill")
                         .font(.system(size: 11, weight: .bold))
                         .foregroundColor(isExpanded ? Color.appAccent : Color.appTextSecondary)
                 }
-                
+
                 Text(name.uppercased())
                     .font(.system(size: 11, weight: .bold, design: .rounded))
                     .foregroundColor(isHovering || isExpanded ? .white : Color.appTextSecondary.opacity(0.8))
                     .tracking(0.5)
-                
+
                 Spacer()
-                
+
                 Image(systemName: "chevron.right")
                     .font(.system(size: 10, weight: .black))
                     .foregroundColor(isHovering || isExpanded ? Color.appAccent : Color.appTextSecondary.opacity(0.4))
@@ -314,6 +314,7 @@ struct SidebarNavItem: View {
             }
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
+            .contentShape(Rectangle())
             .background(
                 ZStack {
                     if isSelected {
@@ -359,6 +360,7 @@ struct AccessoryNavItem: View {
             }
             .padding(.horizontal, 12)
             .padding(.vertical, 7)
+            .contentShape(Rectangle())
             .background(
                 ZStack {
                     if isSelected {

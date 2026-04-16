@@ -35,15 +35,6 @@ struct SettingsAppearanceView: View {
                         Toggle("", isOn: $persistence.settings.showLogos)
                             .toggleStyle(.switch)
                     }
-                    
-                    Divider().background(Color.white.opacity(0.06))
-                    
-                    SettingsRow(title: "Selection Color", subtitle: "Custom accent color for selected elements.") {
-                        ColorPicker("", selection: Binding(
-                            get: { Color(hex: persistence.settings.accentHex) },
-                            set: { newColor in persistence.settings.accentHex = newColor.toHex() ?? "FF2A55" }
-                        ), supportsOpacity: false)
-                    }
                 }
             }
             

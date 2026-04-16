@@ -33,7 +33,7 @@ struct ChannelGridView: View {
             HStack(alignment: .lastTextBaseline) {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(sectionTitle)
-                        .font(.system(size: 22, weight: .bold, design: .rounded))
+                        .font(.system(size: 18, weight: .bold, design: .rounded))
                         .foregroundColor(.white)
                         .lineLimit(1)
                         .minimumScaleFactor(0.8)
@@ -116,8 +116,8 @@ struct ChannelGridView: View {
                 }
             }
             .padding(.horizontal, 32)
-            .padding(.top, 20)
-            .padding(.bottom, 16)
+            .padding(.top, 2)
+            .padding(.bottom, 4)
 
             if isLoading {
                 Spacer()
@@ -150,8 +150,10 @@ struct ChannelGridView: View {
                             }
                         }
                         .padding(.horizontal, 32)
+                        .padding(.top, 12)
                         .padding(.bottom, 32)
                     }
+                    .scrollClipDisabled()
                     .frame(minHeight: 0, idealHeight: 100, maxHeight: .infinity)
                 } else {
                     EPGGridView(
