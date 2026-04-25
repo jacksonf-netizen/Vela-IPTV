@@ -27,11 +27,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // always reflect SwiftUI-managed sheets on macOS 13+.
         NotificationCenter.default.post(name: .velaWillTerminate, object: nil)
 
-        // Give SwiftUI's dismiss animation a moment to complete, then re-trigger.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            sender.terminate(nil)
+        // Use .terminateLater so Sparkle (and other callers) know we will
+        // confirm termination rather than treating this as a cancellation.
+        // After the sheet dismiss animation, reply "yes, go ahead".
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            NSApp.reply(toApplicationShouldTerminate: true)
         }
-        return .terminateCancel
+        return .terminateLater
     }
 }
 

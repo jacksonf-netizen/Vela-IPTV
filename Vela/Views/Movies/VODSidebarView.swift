@@ -12,6 +12,7 @@ struct VODSidebarView: View {
         VStack(spacing: 0) {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 6) {
+                    Spacer().frame(height: 4) // Top Cushion
 
                     // MARK: – Library
                     SidebarSectionHeader(title: "LIBRARY")
@@ -129,9 +130,8 @@ struct VODSidebarView: View {
                     .foregroundColor(Color.appTextSecondary.opacity(0.5))
                     .rotationEffect(.degrees(isMoviesExpanded ? 90 : 0))
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 7)
             .padding(.horizontal, 14)
+            .padding(.vertical, 7)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
@@ -187,9 +187,8 @@ struct VODSidebarView: View {
                     .foregroundColor(Color.appTextSecondary.opacity(0.5))
                     .rotationEffect(.degrees(isSeriesExpanded ? 90 : 0))
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 7)
             .padding(.horizontal, 14)
+            .padding(.vertical, 7)
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)

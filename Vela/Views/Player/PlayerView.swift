@@ -18,6 +18,7 @@ struct PlayerView: View {
     @State private var isFavorite = false
     @State private var currentEPG: EPGEntry? = nil
     @State private var controlsTimer: Timer? = nil
+    @State private var epgTask: Task<Void, Never>? = nil
 
     init(initialChannel: Channel, channels: [Channel], authVM: AuthViewModel, categories: [StreamCategory], isPresented: Binding<Bool>, overrideStreamURL: URL? = nil, isVOD: Bool = false) {
         self.channels = channels
@@ -150,12 +151,14 @@ struct PlayerView: View {
             vm.load(url: streamURL, channel: currentChannel)
             startControlsTimer()
             if overrideStreamURL == nil {
-                Task {
+                epgTask?.cancel()
+                epgTask = Task {
                     currentEPG = try? await XtreamCodesService.shared.getEPG(credentials: creds, streamId: currentChannel.streamId).first
                 }
             }
         }
         .onChange(of: currentChannel) { _, newChannel in
+            epgTask?.cancel()
             vm.stop()
             isFavorite = persistence.isFavorite(newChannel)
             if !isVOD {
@@ -169,10 +172,13 @@ struct PlayerView: View {
             let streamURL = overrideStreamURL ?? creds.streamURL(for: newChannel)
             vm.load(url: streamURL, channel: newChannel)
             if overrideStreamURL == nil {
-                Task { currentEPG = try? await XtreamCodesService.shared.getEPG(credentials: creds, streamId: newChannel.streamId).first }
+                epgTask = Task { currentEPG = try? await XtreamCodesService.shared.getEPG(credentials: creds, streamId: newChannel.streamId).first }
             }
         }
-        .onDisappear { vm.stop() }
+        .onDisappear {
+            epgTask?.cancel()
+            vm.stop()
+        }
         .onHover { if $0 { startControlsTimer() } }
         .onExitCommand { isPresented = false } // Close on ESC
         .animation(.easeInOut(duration: 0.2), value: showControls)
@@ -859,8 +865,10 @@ struct PlayerOverlayView: View {
 
                     HStack(spacing: 24) {
                         Button {
-                            let current = mediaPlayer?.position ?? 0
-                            mediaPlayer?.position = max(0, current - 0.02)
+                            if let totalMs = mediaPlayer?.media?.length.intValue, totalMs > 0 {
+                                let skip = Float(10_000) / Float(totalMs)
+                                mediaPlayer?.position = max(0, (mediaPlayer?.position ?? 0) - skip)
+                            }
                         } label: {
                             Image(systemName: "gobackward.10")
                                 .font(.system(size: 16, weight: .bold))
@@ -871,8 +879,10 @@ struct PlayerOverlayView: View {
                         playPauseButton
 
                         Button {
-                            let current = mediaPlayer?.position ?? 0
-                            mediaPlayer?.position = min(1.0, current + 0.02)
+                            if let totalMs = mediaPlayer?.media?.length.intValue, totalMs > 0 {
+                                let skip = Float(10_000) / Float(totalMs)
+                                mediaPlayer?.position = min(1.0, (mediaPlayer?.position ?? 0) + skip)
+                            }
                         } label: {
                             Image(systemName: "goforward.10")
                                 .font(.system(size: 16, weight: .bold))
@@ -928,7 +938,7 @@ struct PlayerOverlayView: View {
 
     private var playPauseButton: some View {
         Button {
-            if isMediaPlaying { mediaPlayer?.pause() } else { mediaPlayer?.play() }
+            mediaPlayer?.pause()
         } label: {
             Image(systemName: isMediaPlaying ? "pause.circle.fill" : "play.circle.fill")
                 .font(.system(size: 36))

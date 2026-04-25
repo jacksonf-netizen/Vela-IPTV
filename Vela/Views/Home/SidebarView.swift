@@ -17,6 +17,7 @@ struct SidebarView: View {
         VStack(spacing: 0) {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: 6) {
+                    Spacer().frame(height: 4) // Top Cushion
 
                     // MARK: – Library
                     SidebarSectionHeader(title: "LIBRARY")

@@ -347,13 +347,15 @@ struct SettingsView: View {
         }
         var region = ""
         let separators = ["[", "]", "|", ":", " - ", " / ", "•", "*", "~", ">>", "—"]
-        if raw.contains("[") && raw.contains("]") {
-            let start = raw.firstIndex(of: "[")!
-            let end = raw.firstIndex(of: "]")!
+        if raw.contains("[") && raw.contains("]"),
+           let start = raw.firstIndex(of: "["),
+           let end = raw.firstIndex(of: "]"),
+           start < end {
             region = String(raw[raw.index(after: start)..<end]).trimmingCharacters(in: .whitespaces)
-        } else if raw.contains("(") && raw.contains(")") {
-            let start = raw.firstIndex(of: "(")!
-            let end = raw.firstIndex(of: ")")!
+        } else if raw.contains("(") && raw.contains(")"),
+                  let start = raw.firstIndex(of: "("),
+                  let end = raw.firstIndex(of: ")"),
+                  start < end {
             region = String(raw[raw.index(after: start)..<end]).trimmingCharacters(in: .whitespaces)
         } else {
             for sep in separators {

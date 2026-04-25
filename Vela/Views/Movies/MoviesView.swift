@@ -7,6 +7,7 @@ struct MoviesView: View {
     @ObservedObject var seriesVM: SeriesViewModel
     @ObservedObject private var persistence = PersistenceService.shared
     @State private var selectedCategory: VODSidebarSelection = .recents
+    @Binding var activeTab: AppTab
     @Binding var columnVisibility: NavigationSplitViewVisibility
     @State private var selectedItem: VODItem? = nil
     @State private var selectedSeries: SeriesItem? = nil

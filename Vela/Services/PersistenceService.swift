@@ -85,11 +85,37 @@ class PersistenceService: ObservableObject {
         
         // Rebuild lookup sets from loaded data
         rebuildFavoriteSets()
-        
+
+        // Flush any pending coalesced saves before the app exits so data isn't lost
+        NotificationCenter.default.addObserver(forName: .velaWillTerminate, object: nil, queue: .main) { [weak self] _ in
+            self?.flushPendingSaves()
+        }
+
         // Heal asynchronously to avoid blocking app launch
         DispatchQueue.main.async { [weak self] in
             self?.healAll()
         }
+    }
+
+    /// Cancel all coalesced write timers and flush to disk immediately.
+    /// Called just before termination so no in-flight changes are dropped.
+    func flushPendingSaves() {
+        favoriteSaveWork?.cancel()
+        recentsSaveWork?.cancel()
+        vodRecentsSaveWork?.cancel()
+        vodFavoritesSaveWork?.cancel()
+        hiddenCatsSaveWork?.cancel()
+        saveFavoritesImmediate()
+        saveRecentsImmediate()
+        saveQueue.sync {
+            if let data = try? JSONEncoder().encode(self.vodRecents) {
+                UserDefaults.standard.set(data, forKey: self.vodRecentsKey)
+            }
+            if let data = try? JSONEncoder().encode(self.vodFavorites) {
+                UserDefaults.standard.set(data, forKey: self.vodFavoritesKey)
+            }
+        }
+        UserDefaults.standard.synchronize()
     }
 
     func healAll() {
@@ -316,11 +342,9 @@ class PersistenceService: ObservableObject {
         ]
 
         let status = SecItemAdd(query as CFDictionary, nil)
-        #if DEBUG
         if status != errSecSuccess {
-            print("[Vela IPTV] WARNING: Keychain save failed for account '\(account)': OSStatus \(status)")
+            print("[Vela IPTV] ERROR: Keychain save failed for account '\(account)': OSStatus \(status)")
         }
-        #endif
     }
 
     private func loadFromKeychain(account: String) -> String? {

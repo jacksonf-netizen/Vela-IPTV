@@ -100,23 +100,24 @@ struct HomeView: View {
             Color.appBackground.ignoresSafeArea()
 
             if !showPlayer {
-                if activeTab == .liveTV || !persistence.settings.showVOD {
+                ZStack {
                     liveTVContent
-                } else {
+                        .opacity(activeTab == .liveTV ? 1 : 0)
+                        .allowsHitTesting(activeTab == .liveTV)
+
                     MoviesView(
                         authVM: authVM,
                         vodVM: vodVM,
                         seriesVM: seriesVM,
+                        activeTab: $activeTab,
                         columnVisibility: $columnVisibility,
                         onPlayItem: { item in playVODItem(item) },
                         onPlayEpisode: { episode, series in playSeriesEpisode(episode, from: series) }
                     )
-                    .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            AppTabBar(activeTab: $activeTab)
-                        }
-                    }
+                    .opacity(activeTab == .movies ? 1 : 0)
+                    .allowsHitTesting(activeTab == .movies)
                 }
+                .animation(.easeInOut(duration: 0.2), value: activeTab)
             }
 
             // MARK: – Full-Screen Player Overlay
@@ -189,6 +190,7 @@ struct HomeView: View {
 
         } detail: {
             ZStack {
+                
                 switch selectedSection {
                 case .recents:
                     RecentView(onSelect: { channel in
@@ -436,7 +438,7 @@ struct GlobalSearchView: View {
                     subtitle: "Type a channel name to search across all your accounts."
                 )
             } else if vm.resultsByProvider.isEmpty {
-                if persistence.providers.allSatisfy({ vm.loadingProviders.contains($0.id) }) {
+                if !vm.loadingProviders.isEmpty {
                     loadingState
                 } else {
                     emptyState(
