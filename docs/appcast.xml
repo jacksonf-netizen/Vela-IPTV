@@ -3,13 +3,13 @@
     <channel>
         <title>Vela IPTV</title>
         <item>
-            <title>1.1.0</title>
-            <pubDate>Thu, 16 Apr 2026 16:43:32 +0000</pubDate>
-            <sparkle:version>27</sparkle:version>
-            <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
+            <title>1.1.1</title>
+            <pubDate>Sat, 25 Apr 2026 17:26:45 +0000</pubDate>
+            <sparkle:version>28</sparkle:version>
+            <sparkle:shortVersionString>1.1.1</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <enclosure url="https://jacksonf-netizen.github.io/Vela-IPTV/VelaIPTV.dmg" length="21189885" type="application/octet-stream" sparkle:edSignature="h/GCi7ZQCWx4evUuygkZZ06TinGAIY5OXYBanfriF93sONEe+Iv+li7nMKTZPeb2oRvBixnchTTcdLIW+98XCA=="/>
+            <enclosure url="https://jacksonf-netizen.github.io/Vela-IPTV/VelaIPTV.dmg" length="21195487" type="application/octet-stream" sparkle:edSignature="fBMVUD5HZy325bM7ustmBBKIJnyWb5abZnzglcb8PFM8VlfMTEYgcpsgD12PpFhuiY3HICdZDcMuBdkl80lSBA=="/>
         </item>
     </channel>
 </rss>
