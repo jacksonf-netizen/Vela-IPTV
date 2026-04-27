@@ -177,6 +177,8 @@ struct PlayerView: View {
         }
         .onDisappear {
             epgTask?.cancel()
+            controlsTimer?.invalidate()
+            controlsTimer = nil
             vm.stop()
         }
         .onHover { if $0 { startControlsTimer() } }
@@ -620,13 +622,13 @@ struct PlayerOverlayView: View {
 
     var body: some View {
         ZStack {
-            // Enhanced Vignette for focus
+            // Keep content readable without darkening the picture too much.
             LinearGradient(
                 stops: [
-                    .init(color: .black.opacity(0.6), location: 0.0),
-                    .init(color: .clear, location: 0.25),
-                    .init(color: .clear, location: 0.75),
-                    .init(color: .black.opacity(0.6), location: 1.0)
+                    .init(color: .black.opacity(0.28), location: 0.0),
+                    .init(color: .clear, location: 0.18),
+                    .init(color: .clear, location: 0.82),
+                    .init(color: .black.opacity(0.28), location: 1.0)
                 ],
                 startPoint: .top,
                 endPoint: .bottom
@@ -635,9 +637,9 @@ struct PlayerOverlayView: View {
             .allowsHitTesting(false)
 
             VStack(spacing: 0) {
-                // MARK: – Top Status Bar (Glassmorphic)
-                HStack(alignment: .center, spacing: 16) {
-                    HStack(spacing: 12) {
+                // MARK: – Minimal Top Strip
+                HStack(alignment: .center, spacing: 12) {
+                    HStack(spacing: 10) {
                         if let iconUrl = channel.streamIcon, let url = URL(string: iconUrl) {
                             AsyncImage(url: url) { phase in
                                 if case .success(let img) = phase {
@@ -647,23 +649,23 @@ struct PlayerOverlayView: View {
                                         .foregroundColor(Color.appAccent)
                                 }
                             }
-                            .frame(width: 40, height: 40)
-                            .clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous))
-                            .background(Color.white.opacity(0.1).clipShape(RoundedRectangle(cornerRadius: 10, style: .continuous)))
+                            .frame(width: 26, height: 26)
+                            .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
+                            .background(Color.white.opacity(0.08).clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous)))
                         } else {
                             ZStack {
-                                RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                RoundedRectangle(cornerRadius: 6, style: .continuous)
                                     .fill(Color.appAccent.opacity(0.2))
-                                    .frame(width: 40, height: 40)
+                                    .frame(width: 26, height: 26)
                                 Text(channel.name.prefix(1))
-                                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                                    .font(.system(size: 12, weight: .bold, design: .rounded))
                                     .foregroundColor(Color.appAccent)
                             }
                         }
 
                         VStack(alignment: .leading, spacing: 1) {
                             Text(channel.name)
-                                .font(.system(size: 16, weight: .bold, design: .rounded))
+                                .font(.system(size: 13, weight: .semibold, design: .rounded))
                                 .foregroundColor(.white)
                                 .lineLimit(1)
                                 .minimumScaleFactor(0.7)
@@ -671,28 +673,26 @@ struct PlayerOverlayView: View {
                             if isVOD {
                                 HStack(spacing: 5) {
                                     Image(systemName: "film.fill")
-                                        .font(.system(size: 9))
-                                        .foregroundColor(Color.appAccent)
-                                    Text("MOVIE")
-                                        .font(.system(size: 10, weight: .black))
-                                        .foregroundColor(Color.appAccent)
-                                        .tracking(1.0)
+                                        .font(.system(size: 8))
+                                        .foregroundColor(.white.opacity(0.7))
+                                    Text("Movie")
+                                        .font(.system(size: 10, weight: .medium))
+                                        .foregroundColor(.white.opacity(0.7))
                                 }
                             } else if let epg = epgEntry {
                                 Text(epg.title)
-                                    .font(.system(size: 12, weight: .medium))
-                                    .foregroundColor(Color.appTextSecondary)
+                                    .font(.system(size: 10, weight: .medium))
+                                    .foregroundColor(.white.opacity(0.7))
                                     .lineLimit(1)
                             } else {
                                 HStack(spacing: 5) {
                                     Circle()
                                         .fill(Color.appLiveRed)
-                                        .frame(width: 6, height: 6)
+                                        .frame(width: 5, height: 5)
                                         .opacity(isPulseActive ? 1.0 : 0.4)
-                                    Text("LIVE STREAM")
-                                        .font(.system(size: 10, weight: .black))
-                                        .foregroundColor(Color.appLiveRed)
-                                        .tracking(1.0)
+                                    Text("Live")
+                                        .font(.system(size: 10, weight: .medium))
+                                        .foregroundColor(.white.opacity(0.7))
                                 }
                                 .onAppear { withAnimation(.easeInOut(duration: 1.0).repeatForever(autoreverses: true)) { isPulseActive = true } }
                             }
@@ -700,26 +700,25 @@ struct PlayerOverlayView: View {
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                    Spacer(minLength: 16)
+                    Spacer(minLength: 8)
 
-                    // Action Buttons (Apple standard style)
-                    HStack(spacing: 14) {
+                    HStack(spacing: 8) {
                         if let stats = streamStats {
                             Text(stats)
-                                .font(.system(size: 10, weight: .bold))
-                                .foregroundColor(Color.appAccent)
-                                .padding(.horizontal, 10)
-                                .padding(.vertical, 5)
-                                .background(Color.appAccent.opacity(0.15))
+                                .font(.system(size: 9, weight: .medium))
+                                .foregroundColor(.white.opacity(0.75))
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color.black.opacity(0.35))
                                 .clipShape(Capsule())
                         }
 
                         Button { isShowingSettings.toggle() } label: {
                             Image(systemName: "slider.horizontal.3")
-                                .font(.system(size: 16, weight: .medium))
+                                .font(.system(size: 13, weight: .medium))
                                 .foregroundColor(.white)
-                                .frame(width: 40, height: 40)
-                                .background(isHoveringSettings ? Color.white.opacity(0.15) : Color.white.opacity(0.08))
+                                .frame(width: 30, height: 30)
+                                .background(isHoveringSettings ? Color.white.opacity(0.18) : Color.white.opacity(0.08))
                                 .clipShape(Circle())
                         }
                         .buttonStyle(.plain)
@@ -730,10 +729,10 @@ struct PlayerOverlayView: View {
 
                         Button(action: onFavoriteToggle) {
                             Image(systemName: isFavorite ? "heart.fill" : "heart")
-                                .font(.system(size: 18))
+                                .font(.system(size: 14))
                                 .foregroundColor(isFavorite ? Color.appFavoriteRed : .white)
-                                .frame(width: 40, height: 40)
-                                .background(isHoveringFav ? Color.white.opacity(0.15) : Color.white.opacity(0.08))
+                                .frame(width: 30, height: 30)
+                                .background(isHoveringFav ? Color.white.opacity(0.18) : Color.white.opacity(0.08))
                                 .clipShape(Circle())
                         }
                         .buttonStyle(.plain)
@@ -742,19 +741,19 @@ struct PlayerOverlayView: View {
 
                         Button { isPresented = false } label: {
                             Image(systemName: "xmark")
-                                .font(.system(size: 14, weight: .bold))
+                                .font(.system(size: 11, weight: .bold))
                                 .foregroundColor(.white)
-                                .frame(width: 40, height: 40)
-                                .background(isHoveringClose ? Color.white.opacity(0.15) : Color.white.opacity(0.08))
+                                .frame(width: 30, height: 30)
+                                .background(isHoveringClose ? Color.white.opacity(0.18) : Color.white.opacity(0.08))
                                 .clipShape(Circle())
                         }
                         .buttonStyle(.plain)
                         .onHover { isHoveringClose = $0 }
                     }
                 }
-                .padding(.horizontal, 32)
-                .padding(.top, 16) // Safe area is now respected, only need visual breathing room
-                .padding(.bottom, 24)
+                .padding(.horizontal, 18)
+                .padding(.top, 10)
+                .padding(.bottom, 12)
 
                 Spacer()
 
@@ -787,13 +786,13 @@ struct PlayerOverlayView: View {
         HStack(spacing: 0) {
             Spacer()
 
-            HStack(spacing: 24) {
+            HStack(spacing: 14) {
                 volumeControls
 
-                HStack(spacing: 20) {
+                HStack(spacing: 16) {
                     Button(action: onPrev) {
                         Image(systemName: "backward.fill")
-                            .font(.system(size: 14))
+                            .font(.system(size: 12))
                             .foregroundColor(.white.opacity(0.9))
                     }
                     .buttonStyle(.plain)
@@ -802,7 +801,7 @@ struct PlayerOverlayView: View {
 
                     Button(action: onNext) {
                         Image(systemName: "forward.fill")
-                            .font(.system(size: 14))
+                            .font(.system(size: 12))
                             .foregroundColor(.white.opacity(0.9))
                     }
                     .buttonStyle(.plain)
@@ -810,21 +809,20 @@ struct PlayerOverlayView: View {
 
                 fullscreenButton
             }
-            .padding(.horizontal, 20)
-            .padding(.vertical, 10)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 8)
             .background(
                 VisualEffectView(material: .hudWindow, blendingMode: .withinWindow)
                     .clipShape(Capsule())
-                    .overlay(Capsule().stroke(Color.white.opacity(0.1), lineWidth: 0.5))
-                    .shadow(color: .black.opacity(0.4), radius: 25, x: 0, y: 12)
+                    .overlay(Capsule().stroke(Color.white.opacity(0.08), lineWidth: 0.5))
             )
-            .frame(maxWidth: 580)
-            .frame(minWidth: 320)
+            .frame(maxWidth: 420)
+            .frame(minWidth: 260)
 
             Spacer()
         }
-        .padding(.horizontal, 40)
-        .padding(.bottom, 32)
+        .padding(.horizontal, 22)
+        .padding(.bottom, 18)
     }
 
     // MARK: – VOD Controls (with timeline)
@@ -833,7 +831,7 @@ struct PlayerOverlayView: View {
         VStack(spacing: 0) {
             Spacer()
 
-            VStack(spacing: 8) {
+            VStack(spacing: 6) {
                 // Timeline scrubber
                 VStack(spacing: 4) {
                     VODTimelineSlider(
@@ -846,24 +844,24 @@ struct PlayerOverlayView: View {
 
                     HStack {
                         Text(formatVLCTime(mediaPlayer?.time.intValue))
-                            .font(.system(size: 11, weight: .bold, design: .monospaced))
-                            .foregroundColor(.white.opacity(0.7))
+                            .font(.system(size: 10, weight: .medium, design: .monospaced))
+                            .foregroundColor(.white.opacity(0.65))
 
                         Spacer()
 
                         Text(formatVLCTime(mediaPlayer?.media?.length.intValue))
-                            .font(.system(size: 11, weight: .bold, design: .monospaced))
+                            .font(.system(size: 10, weight: .medium, design: .monospaced))
                             .foregroundColor(.white.opacity(0.5))
                     }
                 }
 
                 // Transport controls
-                HStack(spacing: 20) {
+                HStack(spacing: 14) {
                     volumeControls
 
                     Spacer()
 
-                    HStack(spacing: 24) {
+                    HStack(spacing: 18) {
                         Button {
                             if let totalMs = mediaPlayer?.media?.length.intValue, totalMs > 0 {
                                 let skip = Float(10_000) / Float(totalMs)
@@ -871,7 +869,7 @@ struct PlayerOverlayView: View {
                             }
                         } label: {
                             Image(systemName: "gobackward.10")
-                                .font(.system(size: 16, weight: .bold))
+                                .font(.system(size: 14, weight: .semibold))
                                 .foregroundColor(.white.opacity(0.9))
                         }
                         .buttonStyle(.plain)
@@ -885,7 +883,7 @@ struct PlayerOverlayView: View {
                             }
                         } label: {
                             Image(systemName: "goforward.10")
-                                .font(.system(size: 16, weight: .bold))
+                                .font(.system(size: 14, weight: .semibold))
                                 .foregroundColor(.white.opacity(0.9))
                         }
                         .buttonStyle(.plain)
@@ -896,16 +894,15 @@ struct PlayerOverlayView: View {
                     fullscreenButton
                 }
             }
-            .padding(.horizontal, 24)
-            .padding(.vertical, 14)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 10)
             .background(
                 VisualEffectView(material: .hudWindow, blendingMode: .withinWindow)
-                    .clipShape(RoundedRectangle(cornerRadius: 16, style: .continuous))
-                    .overlay(RoundedRectangle(cornerRadius: 16, style: .continuous).stroke(Color.white.opacity(0.1), lineWidth: 0.5))
-                    .shadow(color: .black.opacity(0.4), radius: 25, x: 0, y: 12)
+                    .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    .overlay(RoundedRectangle(cornerRadius: 12, style: .continuous).stroke(Color.white.opacity(0.08), lineWidth: 0.5))
             )
-            .padding(.horizontal, 40)
-            .padding(.bottom, 32)
+            .padding(.horizontal, 22)
+            .padding(.bottom, 18)
         }
     }
 
@@ -925,9 +922,9 @@ struct PlayerOverlayView: View {
             .buttonStyle(.plain)
 
             Slider(value: $volume, in: 0...1)
-                .frame(minWidth: 40, maxWidth: 100)
+                .frame(minWidth: 36, maxWidth: 78)
                 .tint(Color.appAccent)
-                .scaleEffect(0.9)
+                .scaleEffect(0.82)
                 .onChange(of: volume) { _, newValue in
                     let clamped = min(max(newValue, 0.0), 1.0)
                     mediaPlayer?.audio?.volume = Int32(clamped * 100)
@@ -950,9 +947,9 @@ struct PlayerOverlayView: View {
             }
         } label: {
             Image(systemName: isMediaPlaying ? "pause.circle.fill" : "play.circle.fill")
-                .font(.system(size: 36))
+                .font(.system(size: 30))
                 .foregroundColor(.white)
-                .shadow(color: Color.appAccent.opacity(0.3), radius: 6)
+                .shadow(color: Color.appAccent.opacity(0.25), radius: 4)
         }
         .buttonStyle(.plain)
         .keyboardShortcut(.space, modifiers: [])
@@ -965,9 +962,9 @@ struct PlayerOverlayView: View {
             }
         } label: {
             Image(systemName: "arrow.up.left.and.arrow.down.right")
-                .font(.system(size: 12, weight: .bold))
+                .font(.system(size: 10, weight: .bold))
                 .foregroundColor(.white.opacity(0.8))
-                .frame(width: 30, height: 30)
+                .frame(width: 24, height: 24)
                 .background(Color.white.opacity(0.08))
                 .clipShape(Circle())
         }

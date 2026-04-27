@@ -154,7 +154,6 @@ struct VODSidebarView: View {
                 CategoryRow(
                     category: cat,
                     isSelected: selectedCategory == .category(cat, providerId: provider.id),
-                    isHidden: false,
                     onSelect: { selectedCategory = .category(cat, providerId: provider.id) }
                 )
             }
@@ -211,7 +210,6 @@ struct VODSidebarView: View {
                 CategoryRow(
                     category: cat,
                     isSelected: selectedCategory == .seriesCategory(cat, providerId: provider.id),
-                    isHidden: false,
                     onSelect: { selectedCategory = .seriesCategory(cat, providerId: provider.id) }
                 )
             }

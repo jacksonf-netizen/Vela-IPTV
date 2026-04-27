@@ -11,7 +11,6 @@ struct SidebarView: View {
     @State private var isHoveringSettings = false
     @State private var isHoveringAdd = false
     @State private var expandedProviderIds: Set<UUID> = []
-    @ObservedObject private var updater = UpdaterViewModel.shared
 
     var body: some View {
         VStack(spacing: 0) {
@@ -80,7 +79,6 @@ struct SidebarView: View {
                                 CategoryRow(
                                     category: cat,
                                     isSelected: selectedSection == .category(cat, providerId: provider.id),
-                                    isHidden: false,
                                     onSelect: { selectedSection = .category(cat, providerId: provider.id) }
                                 )
                             }
@@ -185,7 +183,6 @@ struct SidebarView: View {
 struct CategoryRow: View {
     let category: StreamCategory
     let isSelected: Bool
-    let isHidden: Bool
     let onSelect: () -> Void
     @State private var isHovering = false
 
