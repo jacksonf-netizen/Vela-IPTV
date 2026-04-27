@@ -938,7 +938,16 @@ struct PlayerOverlayView: View {
 
     private var playPauseButton: some View {
         Button {
-            mediaPlayer?.pause()
+            guard let player = mediaPlayer else { return }
+            if isMediaPlaying || player.isPlaying {
+                player.pause()
+                // Keep icon responsive while VLC propagates delegate updates.
+                isMediaPlaying = false
+            } else {
+                player.play()
+                // Keep icon responsive while VLC propagates delegate updates.
+                isMediaPlaying = true
+            }
         } label: {
             Image(systemName: isMediaPlaying ? "pause.circle.fill" : "play.circle.fill")
                 .font(.system(size: 36))
@@ -946,6 +955,7 @@ struct PlayerOverlayView: View {
                 .shadow(color: Color.appAccent.opacity(0.3), radius: 6)
         }
         .buttonStyle(.plain)
+        .keyboardShortcut(.space, modifiers: [])
     }
 
     private var fullscreenButton: some View {
