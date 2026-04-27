@@ -379,17 +379,19 @@ class GlobalSearchViewModel: ObservableObject {
             let channels = try await service.getLiveStreams(credentials: provider.credentials, providerId: provider.id)
             providerChannelCache[provider.id] = channels
 
-            let q = searchQuery.lowercased()
-            if !q.isEmpty {
-                let matches = channels.filter { channel in
-                    !persistence.isCategoryHidden(channel.categoryId ?? "", providerId: provider.id) &&
-                    channel.name.lowercased().contains(q)
-                }
-                if !matches.isEmpty {
-                    await MainActor.run {
-                        resultsByProvider[provider.id] = matches
-                    }
-                }
+            // Ignore outdated async results from previous queries.
+            let activeQuery = searchQuery.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+            guard !activeQuery.isEmpty, activeQuery == query else { return }
+
+            let matches = channels.filter { channel in
+                !persistence.isCategoryHidden(channel.categoryId ?? "", providerId: provider.id) &&
+                channel.name.lowercased().contains(query)
+            }
+
+            if matches.isEmpty {
+                resultsByProvider.removeValue(forKey: provider.id)
+            } else {
+                resultsByProvider[provider.id] = matches
             }
         } catch {
             #if DEBUG
@@ -682,8 +684,3 @@ struct SearchChannelCard: View {
     }
 }
 
-enum SearchSortMode: String, CaseIterable, Identifiable {
-    case provider = "By Provider"
-    case alphabetical = "A-Z"
-    var id: String { rawValue }
-}

@@ -27,13 +27,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // always reflect SwiftUI-managed sheets on macOS 13+.
         NotificationCenter.default.post(name: .velaWillTerminate, object: nil)
 
+        // Also force-close any currently attached AppKit sheets.
+        for window in NSApp.windows {
+            if let sheet = window.attachedSheet {
+                window.endSheet(sheet)
+            }
+        }
+
         // Use .terminateLater so Sparkle (and other callers) know we will
         // confirm termination rather than treating this as a cancellation.
-        // After the sheet dismiss animation, reply "yes, go ahead".
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            NSApp.reply(toApplicationShouldTerminate: true)
-        }
+        // Reply once sheets are actually gone (or after a short timeout).
+        waitForSheetDismissalAndReply()
         return .terminateLater
+    }
+
+    private func waitForSheetDismissalAndReply(attempt: Int = 0) {
+        let hasAttachedSheets = NSApp.windows.contains { $0.attachedSheet != nil }
+        if !hasAttachedSheets || attempt >= 20 {
+            NSApp.reply(toApplicationShouldTerminate: true)
+            return
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+            self?.waitForSheetDismissalAndReply(attempt: attempt + 1)
+        }
     }
 }
 
@@ -51,6 +68,11 @@ struct VelaIPTVApp: App {
         .defaultSize(width: 1100, height: 700)
         .commands {
             CommandGroup(replacing: .newItem) {}
+            CommandGroup(after: .appInfo) {
+                Button("Check for Updates…") {
+                    UpdaterViewModel.shared.checkForUpdates()
+                }
+            }
         }
     }
 }

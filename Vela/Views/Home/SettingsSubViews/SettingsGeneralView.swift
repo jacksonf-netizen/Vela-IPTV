@@ -42,24 +42,6 @@ struct SettingsGeneralView: View {
                 }
             }
 
-            SettingsGroup(title: "Maintenance") {
-                VStack(spacing: 0) {
-                    SettingsRow(title: "Software Update", subtitle: "Check for newer versions of Vela IPTV.") {
-                        Button {
-                            UpdaterViewModel.shared.checkForUpdates()
-                        } label: {
-                            Text("Check for Updates...")
-                                .font(.system(size: 12, weight: .semibold))
-                                .padding(.horizontal, 12)
-                                .padding(.vertical, 6)
-                                .background(Color.white.opacity(0.1))
-                                .clipShape(RoundedRectangle(cornerRadius: 6, style: .continuous))
-                                .overlay(RoundedRectangle(cornerRadius: 6, style: .continuous).stroke(Color.white.opacity(0.1), lineWidth: 1))
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
-            }
         }
     }
 }
